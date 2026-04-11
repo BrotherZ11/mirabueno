@@ -49,7 +49,8 @@ import {
         <li>
           <a
             href={`tel:${phoneUrl}`}
-            class="transition hover:text-primary-light">{SITE.phone}</a>
+            class="transition hover:text-primary-light">{SITE.phone}</a
+          >
         </li>
         <li>
           {
@@ -65,16 +66,9 @@ import {
   </div>
 
   <div class="border-t border-black/8">
-    <div
-      class="section-shell flex flex-col gap-3 py-5 text-sm text-text/50 md:flex-row md:items-center md:justify-between"
-    >
-      <p>
-        © {new Date().getFullYear()}
-        {SITE.legalName}. Todos los derechos reservados.
-      </p>
-      <p>
-        Diseñado con Astro, TailwindCSS y una experiencia centrada en reservas.
-      </p>
-    </div>
+    <p class="section-shell text-center text-sm text-text/70">
+      © {new Date().getFullYear()}
+      {SITE.legalName}. Todos los derechos reservados.
+    </p>
   </div>
 </footer>

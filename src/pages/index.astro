@@ -6,30 +6,30 @@ import { SITE, phoneUrl, whatsappUrl } from "../consts";
 
 const featuredDishes = [
   {
-    title: "Tataki de atún rojo",
+    title: "Crujientes de queso de cabra",
     description:
-      "Atún marcado, crema cítrica y brotes frescos para abrir el apetito con equilibrio y elegancia.",
-    price: "18 €",
+      "Crujiente relleno de queso de cabra con mermelada, uno de los entrantes más reconocibles de la casa.",
+    price: "13 €",
   },
   {
-    title: "Arroz meloso de carabineros",
+    title: "Risotto de boletus",
     description:
-      "Arroz de fondo intenso y acabado sedoso, pensado para compartir en mesa.",
-    price: "24 €",
+      "Arroz meloso con boletus y queso grana padano, con un perfil cremoso y profundo.",
+    price: "13 €",
   },
   {
-    title: "Solomillo con reducción de tempranillo",
+    title: "Presa ibérica cubierta de jamón ibérico",
     description:
-      "Corte premium acompañado de puré suave y salsa vínica de la casa.",
-    price: "27 €",
+      "Una de las carnes estrella de la carta, intensa y jugosa, pensada para quien viene buscando producto ibérico.",
+    price: "19,50 €",
   },
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=900&q=80",
+  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg",
+  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-02-f9-02f99c70-3dea-43c4-88d2-63814f77f01e-20060-venta-mirabueno-0ac31fafb11b4c73922a2daa5a199026.jpeg",
+  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-f4-fb-f4fb8fd1-1690-4b24-82a6-cbe5c4551a9c-20060-venta-mirabueno-e5ed3756a6734c3e94dfe569d36cd7c5.jpeg",
+  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-19-e4-19e49abf-4672-492f-bfe9-a6c1462bb3a4-20060-venta-mirabueno-2eecb8f7dd144d5893522cc06884d400.jpeg",
 ];
 ---
 
@@ -45,7 +45,7 @@ const galleryImages = [
     primaryLabel="Reservar ahora"
     secondaryHref="/carta"
     secondaryLabel="Ver carta"
-    image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80"
+    image="https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg"
   />
 
   <section
@@ -126,7 +126,7 @@ const galleryImages = [
           >
             <div class="flex items-start justify-between gap-4">
               <h3 class="font-display text-2xl text-text">{dish.title}</h3>
-              <span class="rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-sm text-primary">
+              <span class="shrink-0 whitespace-nowrap rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-sm text-primary">
                 {dish.price}
               </span>
             </div>
@@ -178,7 +178,7 @@ const galleryImages = [
         <div data-aos="fade-right">
           <p class="eyebrow">Reserva tu mesa</p>
           <h2 class="mt-3 font-display text-4xl text-text sm:text-5xl">
-            Haz tu reserva en segundos y vive VentaMirabueno.
+            Haz tu reserva en segundos y vive Venta Mirabueno.
           </h2>
           <p class="mt-5 max-w-2xl text-lg text-text/70">
             Ideal para cenas especiales, reuniones o una escapada gastronómica

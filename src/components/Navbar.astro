@@ -1,4 +1,5 @@
 ---
+import Icon from "../assets/Icon.png";
 import { navLinks, whatsappUrl } from "../consts";
 
 const currentPath = Astro.url.pathname;
@@ -14,9 +15,15 @@ const currentPath = Astro.url.pathname;
       aria-label="Ir a la página principal de Venta Mirabueno"
     >
       <span
-        class="flex h-11 w-11 items-center justify-center rounded-full border border-primary/20 bg-primary/8 font-display text-xl text-primary"
+        class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-white shadow-sm"
       >
-        Logo
+        <img
+          src={Icon.src}
+          alt="Logo de Venta Mirabueno"
+          class="h-full w-full object-cover"
+          width="44"
+          height="44"
+        />
       </span>
       <span>
         <span class="block font-display text-xl tracking-[0.12em]"
