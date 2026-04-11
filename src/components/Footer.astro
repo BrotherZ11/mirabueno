@@ -1,0 +1,47 @@
+---
+import { SITE, navLinks, whatsappUrl } from '../consts';
+---
+
+<footer class="border-t border-white/10 bg-black/40">
+  <div class="section-shell grid gap-10 py-14 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+    <div class="space-y-5">
+      <p class="eyebrow">Restaurante premium en Madrid</p>
+      <h2 class="font-display text-3xl text-white">Una experiencia gastronómica cuidada al detalle.</h2>
+      <p class="max-w-xl text-white/65">
+        Cocina mediterránea de autor, ambiente elegante y una atención pensada para convertir cada visita en un momento especial.
+      </p>
+      <a href={whatsappUrl} class="btn-primary inline-flex" target="_blank" rel="noreferrer">Reservar mesa</a>
+    </div>
+
+    <div>
+      <h3 class="font-display text-xl text-white">Explora</h3>
+      <ul class="mt-5 space-y-3 text-white/65">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="transition hover:text-primary-light">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-display text-xl text-white">Contacto</h3>
+      <ul class="mt-5 space-y-3 text-white/65">
+        <li>{SITE.address}</li>
+        <li><a href={`tel:${SITE.phone.replace(/\s+/g, '')}`} class="transition hover:text-primary-light">{SITE.phone}</a></li>
+        <li>
+          {SITE.hours.map((slot) => (
+            <span class="block">{slot.label}: {slot.value}</span>
+          ))}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="section-shell flex flex-col gap-3 py-5 text-sm text-white/45 md:flex-row md:items-center md:justify-between">
+      <p>© {new Date().getFullYear()} {SITE.legalName}. Todos los derechos reservados.</p>
+      <p>Diseñado con Astro, TailwindCSS y una experiencia centrada en reservas.</p>
+    </div>
+  </div>
+</footer>

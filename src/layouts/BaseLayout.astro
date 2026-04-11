@@ -1,0 +1,102 @@
+---
+import 'aos/dist/aos.css';
+import '../styles/global.css';
+
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import { SITE, whatsappUrl } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  image?: string;
+}
+
+const {
+  title = SITE.defaultTitle,
+  description = SITE.defaultDescription,
+  pathname = Astro.url.pathname,
+  image = SITE.ogImage
+} = Astro.props;
+
+const canonical = new URL(pathname, SITE.siteUrl).toString();
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: SITE.legalName,
+  image,
+  telephone: SITE.phone,
+  servesCuisine: ['Mediterránea', 'Cocina de autor'],
+  priceRange: '€€€',
+  url: canonical,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Calle Mayor 123',
+    addressLocality: 'Madrid',
+    postalCode: '28013',
+    addressCountry: 'ES'
+  },
+  openingHoursSpecification: SITE.hours.map((slot) => ({
+    '@type': 'OpeningHoursSpecification',
+    description: `${slot.label}: ${slot.value}`
+  })),
+  sameAs: [SITE.menuUrl, whatsappUrl]
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={SITE.legalName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <a href={whatsappUrl} class="floating-reserve" target="_blank" rel="noreferrer" aria-label="Reservar mesa por WhatsApp">
+      Reservar
+    </a>
+    <Footer />
+
+    <script>
+      import AOS from 'aos';
+
+      const initAos = () => {
+        AOS.init({
+          once: true,
+          duration: 750,
+          easing: 'ease-out-cubic',
+          offset: 80
+        });
+      };
+
+      initAos();
+    </script>
+  </body>
+</html>
