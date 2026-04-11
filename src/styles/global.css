@@ -37,26 +37,22 @@
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   .panel {
-    @apply relative rounded-[2rem] border border-black/8 bg-white/82 p-6 shadow-wine backdrop-blur-sm sm:p-8;
+    @apply relative rounded-[1.75rem] border border-black/8 bg-white/82 p-5 shadow-wine backdrop-blur-sm sm:rounded-[2rem] sm:p-8;
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/70 bg-primary px-6 py-3 text-sm font-medium uppercase tracking-[0.25em] text-white shadow-wine hover:-translate-y-0.5 hover:bg-[#7a3131];
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/70 bg-primary px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-white shadow-wine hover:-translate-y-0.5 hover:bg-[#7a3131] sm:px-6 sm:text-sm sm:tracking-[0.25em];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-6 py-3 text-sm font-medium uppercase tracking-[0.25em] text-text hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary;
+    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary sm:px-6 sm:text-sm sm:tracking-[0.25em];
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.38em] text-primary;
-  }
-
-  .floating-reserve {
-    @apply fixed bottom-5 right-5 z-50 inline-flex items-center justify-center rounded-full border border-primary/40 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary shadow-wine hover:-translate-y-0.5 hover:bg-[#fff7f5];
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-primary sm:text-xs sm:tracking-[0.38em];
   }
 }

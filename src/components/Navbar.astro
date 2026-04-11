@@ -8,14 +8,14 @@ const currentPath = Astro.url.pathname;
 <header
   class="sticky top-0 z-50 border-b border-black/8 bg-background/90 backdrop-blur-xl"
 >
-  <div class="section-shell flex items-center justify-between gap-6 py-4">
+  <div class="section-shell flex items-center justify-between gap-3 py-3 sm:gap-6 sm:py-4">
     <a
       href="/"
-      class="flex items-center gap-3 text-sm tracking-[0.3em] text-text"
+      class="min-w-0 flex items-center gap-2 text-sm tracking-[0.22em] text-text sm:gap-3 sm:tracking-[0.3em]"
       aria-label="Ir a la página principal de Venta Mirabueno"
     >
       <span
-        class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-white shadow-sm"
+        class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-primary/20 bg-white shadow-sm sm:h-11 sm:w-11"
       >
         <img
           src={Icon.src}
@@ -25,11 +25,11 @@ const currentPath = Astro.url.pathname;
           height="44"
         />
       </span>
-      <span>
-        <span class="block font-display text-xl tracking-[0.12em]"
+      <span class="min-w-0">
+        <span class="block truncate font-display text-base tracking-[0.08em] sm:text-xl sm:tracking-[0.12em]"
           >Venta Mirabueno</span
         >
-        <span class="text-xs uppercase tracking-[0.35em] text-text/55"
+        <span class="block truncate text-[0.62rem] uppercase tracking-[0.18em] text-text/55 sm:text-xs sm:tracking-[0.35em]"
           >Setenil de las Bodegas · España</span
         >
       </span>
@@ -66,7 +66,7 @@ const currentPath = Astro.url.pathname;
 
     <button
       id="nav-toggle"
-      class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white/80 text-text md:hidden"
+      class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/80 text-text md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Abrir menú"
@@ -91,7 +91,7 @@ const currentPath = Astro.url.pathname;
     class="hidden border-t border-black/8 bg-background/95 md:hidden"
   >
     <nav
-      class="section-shell flex flex-col gap-4 py-5"
+      class="section-shell flex flex-col gap-3 py-4"
       aria-label="Navegación móvil"
     >
       {
@@ -101,7 +101,7 @@ const currentPath = Astro.url.pathname;
             <a
               href={link.href}
               class:list={[
-                "rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.25em] transition duration-300",
+                "rounded-2xl border px-4 py-3 text-center text-[0.72rem] uppercase tracking-[0.18em] transition duration-300",
                 isActive
                   ? "border-primary/30 bg-primary/8 text-primary"
                   : "border-black/10 bg-white/80 text-text/75 hover:border-primary/30 hover:text-text",
@@ -115,7 +115,7 @@ const currentPath = Astro.url.pathname;
       }
       <a
         href={whatsappUrl}
-        class="btn-primary text-center"
+        class="btn-primary w-full justify-center text-center"
         target="_blank"
         rel="noreferrer">Reservar por WhatsApp</a
       >

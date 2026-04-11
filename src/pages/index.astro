@@ -49,7 +49,7 @@ const galleryImages = [
   />
 
   <section
-    class="section-shell grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
+    class="section-shell grid gap-8 py-14 sm:gap-12 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
   >
     <div data-aos="fade-right">
       <SectionHeading
@@ -59,7 +59,7 @@ const galleryImages = [
       />
     </div>
 
-    <div class="grid gap-5 sm:grid-cols-2" data-aos="fade-left">
+    <div class="grid gap-4 sm:grid-cols-2 sm:gap-5" data-aos="fade-left">
       <article class="panel">
         <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
           >Producto</span
@@ -87,13 +87,13 @@ const galleryImages = [
             <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
               >Reserva directa</span
             >
-            <h3 class="mt-4 font-display text-2xl text-text">
+            <h3 class="mt-4 font-display text-xl text-text sm:text-2xl">
               Confirmación rápida por WhatsApp
             </h3>
           </div>
           <a
             href={whatsappUrl}
-            class="btn-secondary"
+            class="btn-secondary w-full justify-center md:w-auto"
             target="_blank"
             rel="noreferrer">Solicitar mesa</a
           >
@@ -102,7 +102,7 @@ const galleryImages = [
     </div>
   </section>
 
-  <section class="section-shell py-20">
+  <section class="section-shell py-14 sm:py-20">
     <div
       class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
     >
@@ -116,7 +116,7 @@ const galleryImages = [
       >
     </div>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+    <div class="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-3">
       {
         featuredDishes.map((dish, index) => (
           <article
@@ -124,8 +124,8 @@ const galleryImages = [
             data-aos="fade-up"
             data-aos-delay={index * 120}
           >
-            <div class="flex items-start justify-between gap-4">
-              <h3 class="font-display text-2xl text-text">{dish.title}</h3>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+              <h3 class="font-display text-xl text-text sm:text-2xl">{dish.title}</h3>
               <span class="shrink-0 whitespace-nowrap rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-sm text-primary">
                 {dish.price}
               </span>
@@ -137,7 +137,7 @@ const galleryImages = [
     </div>
   </section>
 
-  <section class="section-shell py-20">
+  <section class="section-shell py-14 sm:py-20">
     <SectionHeading
       eyebrow="Galería"
       title="El entorno acompaña cada plato."
@@ -145,7 +145,7 @@ const galleryImages = [
       align="center"
     />
 
-    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+    <div class="mt-10 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
       {
         galleryImages.map((image, index) => (
           <figure
@@ -156,7 +156,7 @@ const galleryImages = [
             <img
               src={image}
               alt={`Ambiente gastronómico en Venta Mirabueno ${index + 1}`}
-              class="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+              class="h-64 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-80"
               loading="lazy"
               decoding="async"
             />
@@ -166,7 +166,7 @@ const galleryImages = [
     </div>
   </section>
 
-  <section class="section-shell py-20">
+  <section class="section-shell py-14 pb-16 sm:py-20">
     <div class="panel overflow-hidden">
       <div
         class="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(95,34,33,0.35),transparent_70%)] lg:block"
@@ -177,10 +177,10 @@ const galleryImages = [
       >
         <div data-aos="fade-right">
           <p class="eyebrow">Reserva tu mesa</p>
-          <h2 class="mt-3 font-display text-4xl text-text sm:text-5xl">
+          <h2 class="mt-3 font-display text-3xl text-text sm:text-5xl">
             Haz tu reserva en segundos y vive Venta Mirabueno.
           </h2>
-          <p class="mt-5 max-w-2xl text-lg text-text/70">
+          <p class="mt-5 max-w-2xl text-base leading-7 text-text/70 sm:text-lg">
             Ideal para cenas especiales, reuniones o una escapada gastronómica
             en Setenil de las Bodegas. Atendemos tus reservas de forma rápida y
             cercana.
@@ -189,12 +189,12 @@ const galleryImages = [
         <div class="flex flex-col gap-4 lg:items-start" data-aos="fade-left">
           <a
             href="/reservas"
-            class="btn-primary justify-center lg:justify-start"
+            class="btn-primary w-full justify-center lg:w-auto lg:justify-start"
             >Reservar por WhatsApp</a
           >
           <a
             href={`tel:${phoneUrl}`}
-            class="text-sm uppercase tracking-[0.3em] text-text/60 transition hover:text-primary-light"
+            class="text-center text-xs uppercase tracking-[0.22em] text-text/60 transition hover:text-primary-light sm:text-sm sm:tracking-[0.3em] lg:text-left"
           >
             {SITE.phone}
           </a>

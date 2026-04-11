@@ -9,7 +9,7 @@ import { SITE, whatsappUrl } from "../consts";
   description="Consulta la carta de Restaurante Venta Mirabueno Setenil y descubre nuestra propuesta mediterránea premium en Setenil de las Bodegas."
   pathname="/carta"
 >
-  <section class="section-shell py-20 sm:py-24">
+  <section class="section-shell py-14 sm:py-24">
     <SectionHeading
       eyebrow="Consulta nuestra carta"
       title="Descubre nuestra propuesta gastronómica completa."
@@ -17,9 +17,9 @@ import { SITE, whatsappUrl } from "../consts";
       align="center"
     />
 
-    <div class="mx-auto mt-12 max-w-6xl space-y-6">
+    <div class="mx-auto mt-10 max-w-6xl space-y-5 sm:mt-12 sm:space-y-6">
       <div
-        class="flex flex-col gap-4 rounded-4xl border border-primary/15 bg-primary/6 p-6 text-center text-text/72 md:flex-row md:items-center md:justify-between md:text-left"
+        class="flex flex-col gap-4 rounded-[1.75rem] border border-primary/15 bg-primary/6 p-5 text-center text-text/72 sm:rounded-4xl sm:p-6 md:flex-row md:items-center md:justify-between md:text-left"
       >
         <p>
           Consulta nuestra carta actualizada y, si quieres asegurar tu mesa
@@ -48,7 +48,7 @@ import { SITE, whatsappUrl } from "../consts";
         <iframe
           src={SITE.menuUrl}
           title="Carta online de Restaurante Venta Mirabueno"
-          class="h-[78vh] min-h-180 w-full"
+          class="h-[68vh] min-h-[34rem] w-full sm:h-[78vh] sm:min-h-180"
           loading="lazy"
           referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
