@@ -1,0 +1,146 @@
+---
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, phoneUrl, whatsappUrl } from '../consts';
+
+const featuredDishes = [
+  {
+    title: 'Tataki de atún rojo',
+    description: 'Atún marcado, crema cítrica y brotes frescos para abrir el apetito con equilibrio y elegancia.',
+    price: '18 €'
+  },
+  {
+    title: 'Arroz meloso de carabineros',
+    description: 'Arroz de fondo intenso y acabado sedoso, pensado para compartir en mesa.',
+    price: '24 €'
+  },
+  {
+    title: 'Solomillo con reducción de tempranillo',
+    description: 'Corte premium acompañado de puré suave y salsa vínica de la casa.',
+    price: '27 €'
+  }
+];
+
+const galleryImages = [
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=900&q=80'
+];
+---
+
+<BaseLayout
+  title="Restaurante Mirabueno | Reserva una experiencia gastronómica premium en Madrid"
+  description="Descubre Mirabueno, restaurante premium en Madrid con cocina mediterránea de autor, carta selecta y reservas rápidas por WhatsApp."
+  pathname="/"
+>
+  <Hero
+    title="La mesa donde la cocina mediterránea se convierte en experiencia."
+    description="Sabores honestos, producto cuidado y una atmósfera elegante para disfrutar de comidas y cenas memorables en el centro de Madrid."
+    primaryHref="/reservas"
+    primaryLabel="Reservar ahora"
+    secondaryHref="/carta"
+    secondaryLabel="Ver carta"
+    image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=80"
+  />
+
+  <section class="section-shell grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <div data-aos="fade-right">
+      <SectionHeading
+        eyebrow="Sobre nosotros"
+        title="Cocina con carácter, servicio cercano y un ambiente que invita a quedarse."
+        description="En Mirabueno reinterpretamos la tradición mediterránea con una puesta en escena contemporánea, ingredientes de temporada y una atención pensada para ocasiones especiales y encuentros cotidianos."
+      />
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2" data-aos="fade-left">
+      <article class="panel">
+        <span class="text-sm uppercase tracking-[0.3em] text-primary-light">Producto</span>
+        <h3 class="mt-4 font-display text-2xl text-white">Selección diaria</h3>
+        <p class="mt-3 text-white/65">Materia prima fresca y una carta que evoluciona con el ritmo de la temporada.</p>
+      </article>
+      <article class="panel">
+        <span class="text-sm uppercase tracking-[0.3em] text-primary-light">Ambiente</span>
+        <h3 class="mt-4 font-display text-2xl text-white">Espacio elegante</h3>
+        <p class="mt-3 text-white/65">Luz tenue, diseño sofisticado y mesas pensadas para una velada cómoda.</p>
+      </article>
+      <article class="panel sm:col-span-2">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span class="text-sm uppercase tracking-[0.3em] text-primary-light">Reserva directa</span>
+            <h3 class="mt-4 font-display text-2xl text-white">Confirmación rápida por WhatsApp</h3>
+          </div>
+          <a href={whatsappUrl} class="btn-secondary" target="_blank" rel="noreferrer">Solicitar mesa</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell py-20">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <SectionHeading
+        eyebrow="Carta destacada"
+        title="Una selección pensada para abrir el apetito."
+        description="Consulta nuestra propuesta gastronómica y descubre algunos de los platos favoritos de nuestros clientes."
+      />
+      <a href="/carta" class="btn-secondary w-full justify-center sm:w-auto">Consulta nuestra carta</a>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {featuredDishes.map((dish, index) => (
+        <article class="panel" data-aos="fade-up" data-aos-delay={index * 120}>
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="font-display text-2xl text-white">{dish.title}</h3>
+            <span class="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary-light">{dish.price}</span>
+          </div>
+          <p class="mt-4 text-white/65">{dish.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell py-20">
+    <SectionHeading
+      eyebrow="Galería"
+      title="El entorno acompaña cada plato."
+      description="Espacios cuidados, emplatados con detalle y una experiencia visual a la altura de la cocina."
+      align="center"
+    />
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {galleryImages.map((image, index) => (
+        <figure class="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5" data-aos="zoom-in" data-aos-delay={index * 100}>
+          <img
+            src={image}
+            alt={`Ambiente gastronómico en Mirabueno ${index + 1}`}
+            class="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell py-20">
+    <div class="panel overflow-hidden">
+      <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(95,34,33,0.35),transparent_70%)] lg:block"></div>
+      <div class="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div data-aos="fade-right">
+          <p class="eyebrow">Reserva tu mesa</p>
+          <h2 class="mt-3 font-display text-4xl text-white sm:text-5xl">Haz tu reserva en segundos y vive Mirabueno.</h2>
+          <p class="mt-5 max-w-2xl text-lg text-white/65">
+            Ideal para cenas especiales, reuniones o una escapada gastronómica en Madrid. Atendemos tus reservas de forma rápida y cercana.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 lg:items-start" data-aos="fade-left">
+          <a href="/reservas" class="btn-primary justify-center lg:justify-start">Reservar por WhatsApp</a>
+          <a href={`tel:${phoneUrl}`} class="text-sm uppercase tracking-[0.3em] text-white/60 transition hover:text-primary-light">
+            {SITE.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

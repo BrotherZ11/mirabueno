@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: #040403;
+  --color-surface: #11100f;
+  --color-surface-soft: #181715;
+  --color-primary: #5f2221;
+  --color-primary-light: #cf9b93;
+  --color-text: #f8f3ed;
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --shadow-wine: 0 30px 80px rgba(95, 34, 33, 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-text antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(95, 34, 33, 0.22), transparent 32%),
+      linear-gradient(180deg, #040403 0%, #090807 100%);
+  }
+
+  ::selection {
+    background: rgba(95, 34, 33, 0.45);
+    color: #fff;
+  }
+
+  a,
+  button {
+    @apply transition duration-300 ease-out;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .panel {
+    @apply relative rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-wine backdrop-blur-sm sm:p-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary px-6 py-3 text-sm font-medium uppercase tracking-[0.25em] text-white shadow-wine hover:-translate-y-0.5 hover:bg-[#7a2b29];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium uppercase tracking-[0.25em] text-white hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary-light;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.38em] text-primary-light;
+  }
+
+  .floating-reserve {
+    @apply fixed bottom-5 right-5 z-50 inline-flex items-center justify-center rounded-full border border-primary/50 bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-wine hover:-translate-y-0.5 hover:bg-[#7a2b29];
+  }
+}

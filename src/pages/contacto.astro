@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, formattedAddress, phoneUrl, whatsappUrl } from '../consts';
+---
+
+<BaseLayout
+  title="Contacto | Restaurante Mirabueno Madrid"
+  description="Encuentra la dirección, horario, teléfono y ubicación de Restaurante Mirabueno en Madrid."
+  pathname="/contacto"
+>
+  <section class="section-shell py-20 sm:py-24">
+    <SectionHeading
+      eyebrow="Contacto"
+      title="Ven a descubrir Mirabueno en el corazón de Madrid."
+      description="Te esperamos en un espacio elegante, perfecto para comidas, cenas y encuentros especiales."
+      align="center"
+    />
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="grid gap-6" data-aos="fade-right">
+        <article class="panel">
+          <h2 class="font-display text-2xl text-white">Dirección</h2>
+          <p class="mt-4 text-white/70">{formattedAddress}</p>
+        </article>
+
+        <article class="panel">
+          <h2 class="font-display text-2xl text-white">Teléfono</h2>
+          <p class="mt-4 text-white/70">
+            <a href={`tel:${phoneUrl}`} class="transition hover:text-primary-light">{SITE.phone}</a>
+          </p>
+        </article>
+
+        <article class="panel">
+          <h2 class="font-display text-2xl text-white">Horarios</h2>
+          <ul class="mt-4 space-y-3 text-white/70">
+            {SITE.hours.map((slot) => (
+              <li class="flex flex-col gap-1 border-b border-white/10 pb-3 last:border-b-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+                <span class="text-white">{slot.label}</span>
+                <span>{slot.value}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <a href={whatsappUrl} class="btn-primary justify-center" target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
+      </div>
+
+      <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-black/30 shadow-wine" data-aos="fade-left">
+        <iframe
+          src={SITE.mapEmbedUrl}
+          title="Mapa de Restaurante Mirabueno en Madrid"
+          class="h-full min-h-[580px] w-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
