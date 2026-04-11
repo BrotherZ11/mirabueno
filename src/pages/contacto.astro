@@ -1,7 +1,7 @@
 ---
 import SectionHeading from '../components/SectionHeading.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, whatsappUrl } from '../consts';
+import { SITE, formattedAddress, phoneUrl, whatsappUrl } from '../consts';
 ---
 
 <BaseLayout
@@ -21,13 +21,13 @@ import { SITE, whatsappUrl } from '../consts';
       <div class="grid gap-6" data-aos="fade-right">
         <article class="panel">
           <h2 class="font-display text-2xl text-white">Dirección</h2>
-          <p class="mt-4 text-white/70">{SITE.address}</p>
+          <p class="mt-4 text-white/70">{formattedAddress}</p>
         </article>
 
         <article class="panel">
           <h2 class="font-display text-2xl text-white">Teléfono</h2>
           <p class="mt-4 text-white/70">
-            <a href={`tel:${SITE.phone.replace(/\s+/g, '')}`} class="transition hover:text-primary-light">{SITE.phone}</a>
+            <a href={`tel:${phoneUrl}`} class="transition hover:text-primary-light">{SITE.phone}</a>
           </p>
         </article>
 

@@ -4,7 +4,7 @@ import '../styles/global.css';
 
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
-import { SITE, whatsappUrl } from '../consts';
+import { SITE, formattedAddress, whatsappUrl } from '../consts';
 
 interface Props {
   title?: string;
@@ -32,16 +32,17 @@ const schema = {
   url: canonical,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Calle Mayor 123',
-    addressLocality: 'Madrid',
-    postalCode: '28013',
-    addressCountry: 'ES'
+    streetAddress: SITE.address.streetAddress,
+    addressLocality: SITE.address.locality,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.countryCode
   },
   openingHoursSpecification: SITE.hours.map((slot) => ({
     '@type': 'OpeningHoursSpecification',
     description: `${slot.label}: ${slot.value}`
   })),
-  sameAs: [SITE.menuUrl, whatsappUrl]
+  sameAs: [SITE.menuUrl, whatsappUrl],
+  areaServed: formattedAddress
 };
 ---
 

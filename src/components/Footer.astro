@@ -1,5 +1,5 @@
 ---
-import { SITE, navLinks, whatsappUrl } from '../consts';
+import { SITE, formattedAddress, navLinks, phoneUrl, whatsappUrl } from '../consts';
 ---
 
 <footer class="border-t border-white/10 bg-black/40">
@@ -27,8 +27,8 @@ import { SITE, navLinks, whatsappUrl } from '../consts';
     <div>
       <h3 class="font-display text-xl text-white">Contacto</h3>
       <ul class="mt-5 space-y-3 text-white/65">
-        <li>{SITE.address}</li>
-        <li><a href={`tel:${SITE.phone.replace(/\s+/g, '')}`} class="transition hover:text-primary-light">{SITE.phone}</a></li>
+        <li>{formattedAddress}</li>
+        <li><a href={`tel:${phoneUrl}`} class="transition hover:text-primary-light">{SITE.phone}</a></li>
         <li>
           {SITE.hours.map((slot) => (
             <span class="block">{slot.label}: {slot.value}</span>

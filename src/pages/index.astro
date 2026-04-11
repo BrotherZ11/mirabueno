@@ -2,7 +2,7 @@
 import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, whatsappUrl } from '../consts';
+import { SITE, phoneUrl, whatsappUrl } from '../consts';
 
 const featuredDishes = [
   {
@@ -136,7 +136,7 @@ const galleryImages = [
         </div>
         <div class="flex flex-col gap-4 lg:items-start" data-aos="fade-left">
           <a href="/reservas" class="btn-primary justify-center lg:justify-start">Reservar por WhatsApp</a>
-          <a href={`tel:${SITE.phone.replace(/\s+/g, '')}`} class="text-sm uppercase tracking-[0.3em] text-white/60 transition hover:text-primary-light">
+          <a href={`tel:${phoneUrl}`} class="text-sm uppercase tracking-[0.3em] text-white/60 transition hover:text-primary-light">
             {SITE.phone}
           </a>
         </div>
