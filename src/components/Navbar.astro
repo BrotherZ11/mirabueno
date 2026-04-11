@@ -5,16 +5,16 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-xl"
+  class="sticky top-0 z-50 border-b border-black/8 bg-background/90 backdrop-blur-xl"
 >
   <div class="section-shell flex items-center justify-between gap-6 py-4">
     <a
       href="/"
-      class="flex items-center gap-3 text-sm tracking-[0.3em] text-white"
+      class="flex items-center gap-3 text-sm tracking-[0.3em] text-text"
       aria-label="Ir a la página principal de Venta Mirabueno"
     >
       <span
-        class="flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-primary/15 font-display text-xl text-primary-light"
+        class="flex h-11 w-11 items-center justify-center rounded-full border border-primary/20 bg-primary/8 font-display text-xl text-primary"
       >
         Logo
       </span>
@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
         <span class="block font-display text-xl tracking-[0.12em]"
           >Venta Mirabueno</span
         >
-        <span class="text-xs uppercase tracking-[0.35em] text-white/60"
+        <span class="text-xs uppercase tracking-[0.35em] text-text/55"
           >Setenil de las Bodegas · España</span
         >
       </span>
@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
               href={link.href}
               class:list={[
                 "text-sm uppercase tracking-[0.25em] transition duration-300 hover:text-primary-light",
-                isActive ? "text-primary-light" : "text-white/70",
+                isActive ? "text-primary" : "text-text/70",
               ]}
               aria-current={isActive ? "page" : undefined}
             >
@@ -59,7 +59,7 @@ const currentPath = Astro.url.pathname;
 
     <button
       id="nav-toggle"
-      class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white/80 text-text md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Abrir menú"
@@ -81,7 +81,7 @@ const currentPath = Astro.url.pathname;
 
   <div
     id="mobile-menu"
-    class="hidden border-t border-white/10 bg-background/95 md:hidden"
+    class="hidden border-t border-black/8 bg-background/95 md:hidden"
   >
     <nav
       class="section-shell flex flex-col gap-4 py-5"
@@ -96,8 +96,8 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 "rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.25em] transition duration-300",
                 isActive
-                  ? "border-primary/50 bg-primary/10 text-primary-light"
-                  : "border-white/10 bg-white/5 text-white/75 hover:border-primary/30 hover:text-white",
+                  ? "border-primary/30 bg-primary/8 text-primary"
+                  : "border-black/10 bg-white/80 text-text/75 hover:border-primary/30 hover:text-text",
               ]}
               aria-current={isActive ? "page" : undefined}
             >

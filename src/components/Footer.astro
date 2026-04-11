@@ -8,14 +8,14 @@ import {
 } from "../consts";
 ---
 
-<footer class="border-t border-white/10 bg-black/40">
+<footer class="border-t border-black/8 bg-white/70 backdrop-blur-sm">
   <div class="section-shell grid gap-10 py-14 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
     <div class="space-y-5">
       <p class="eyebrow">Restaurante en Setenil de las Bodegas</p>
-      <h2 class="font-display text-3xl text-white">
+      <h2 class="font-display text-3xl text-text">
         Una experiencia gastronómica cuidada al detalle.
       </h2>
-      <p class="max-w-xl text-white/65">
+      <p class="max-w-xl text-text/70">
         Cocina mediterránea de autor, ambiente elegante y una atención pensada
         para convertir cada visita en un momento especial.
       </p>
@@ -28,8 +28,8 @@ import {
     </div>
 
     <div>
-      <h3 class="font-display text-xl text-white">Explora</h3>
-      <ul class="mt-5 space-y-3 text-white/65">
+      <h3 class="font-display text-xl text-text">Explora</h3>
+      <ul class="mt-5 space-y-3 text-text/70">
         {
           navLinks.map((link) => (
             <li>
@@ -43,8 +43,8 @@ import {
     </div>
 
     <div>
-      <h3 class="font-display text-xl text-white">Contacto</h3>
-      <ul class="mt-5 space-y-3 text-white/65">
+      <h3 class="font-display text-xl text-text">Contacto</h3>
+      <ul class="mt-5 space-y-3 text-text/70">
         <li>{formattedAddress}</li>
         <li>
           <a
@@ -64,9 +64,9 @@ import {
     </div>
   </div>
 
-  <div class="border-t border-white/10">
+  <div class="border-t border-black/8">
     <div
-      class="section-shell flex flex-col gap-3 py-5 text-sm text-white/45 md:flex-row md:items-center md:justify-between"
+      class="section-shell flex flex-col gap-3 py-5 text-sm text-text/50 md:flex-row md:items-center md:justify-between"
     >
       <p>
         © {new Date().getFullYear()}

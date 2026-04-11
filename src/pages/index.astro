@@ -64,8 +64,8 @@ const galleryImages = [
         <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
           >Producto</span
         >
-        <h3 class="mt-4 font-display text-2xl text-white">Selección diaria</h3>
-        <p class="mt-3 text-white/65">
+        <h3 class="mt-4 font-display text-2xl text-text">Selección diaria</h3>
+        <p class="mt-3 text-text/70">
           Materia prima fresca y una carta que evoluciona con el ritmo de la
           temporada.
         </p>
@@ -74,8 +74,8 @@ const galleryImages = [
         <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
           >Ambiente</span
         >
-        <h3 class="mt-4 font-display text-2xl text-white">Espacio elegante</h3>
-        <p class="mt-3 text-white/65">
+        <h3 class="mt-4 font-display text-2xl text-text">Espacio elegante</h3>
+        <p class="mt-3 text-text/70">
           Luz tenue, diseño sofisticado y mesas pensadas para una velada cómoda.
         </p>
       </article>
@@ -87,7 +87,7 @@ const galleryImages = [
             <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
               >Reserva directa</span
             >
-            <h3 class="mt-4 font-display text-2xl text-white">
+            <h3 class="mt-4 font-display text-2xl text-text">
               Confirmación rápida por WhatsApp
             </h3>
           </div>
@@ -125,12 +125,12 @@ const galleryImages = [
             data-aos-delay={index * 120}
           >
             <div class="flex items-start justify-between gap-4">
-              <h3 class="font-display text-2xl text-white">{dish.title}</h3>
-              <span class="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary-light">
+              <h3 class="font-display text-2xl text-text">{dish.title}</h3>
+              <span class="rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-sm text-primary">
                 {dish.price}
               </span>
             </div>
-            <p class="mt-4 text-white/65">{dish.description}</p>
+            <p class="mt-4 text-text/70">{dish.description}</p>
           </article>
         ))
       }
@@ -149,7 +149,7 @@ const galleryImages = [
       {
         galleryImages.map((image, index) => (
           <figure
-            class="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5"
+            class="group overflow-hidden rounded-4xl border border-black/8 bg-white/80 shadow-wine"
             data-aos="zoom-in"
             data-aos-delay={index * 100}
           >
@@ -177,10 +177,10 @@ const galleryImages = [
       >
         <div data-aos="fade-right">
           <p class="eyebrow">Reserva tu mesa</p>
-          <h2 class="mt-3 font-display text-4xl text-white sm:text-5xl">
+          <h2 class="mt-3 font-display text-4xl text-text sm:text-5xl">
             Haz tu reserva en segundos y vive VentaMirabueno.
           </h2>
-          <p class="mt-5 max-w-2xl text-lg text-white/65">
+          <p class="mt-5 max-w-2xl text-lg text-text/70">
             Ideal para cenas especiales, reuniones o una escapada gastronómica
             en Setenil de las Bodegas. Atendemos tus reservas de forma rápida y
             cercana.
@@ -194,7 +194,7 @@ const galleryImages = [
           >
           <a
             href={`tel:${phoneUrl}`}
-            class="text-sm uppercase tracking-[0.3em] text-white/60 transition hover:text-primary-light"
+            class="text-sm uppercase tracking-[0.3em] text-text/60 transition hover:text-primary-light"
           >
             {SITE.phone}
           </a>
