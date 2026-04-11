@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://restaurante-mirabueno.es',
+  site: 'https://ventamirabueno.com',
   vite: {
     plugins: [tailwindcss()]
   }

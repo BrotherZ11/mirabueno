@@ -1,29 +1,32 @@
 export const SITE = {
-  name: 'Mirabueno',
-  legalName: 'Restaurante Mirabueno',
-  siteUrl: 'https://restaurante-mirabueno.es',
-  defaultTitle: 'Restaurante Mirabueno | Cocina mediterránea premium en Madrid',
+  name: 'Venta Mirabueno',
+  legalName: 'Restaurante Venta Mirabueno',
+  siteUrl: 'https://ventamirabueno.com',
+  defaultTitle: 'Restaurante Venta Mirabueno | Cocina mediterránea premium en Setenil de las Bodegas',
   defaultDescription:
-    'Restaurante Mirabueno, cocina mediterránea premium en Madrid. Disfruta de una experiencia elegante, carta selecta y reservas rápidas por WhatsApp.',
-  phone: '+34 600 123 456',
+    'Restaurante Venta Mirabueno, cocina mediterránea premium en Setenil de las Bodegas. Disfruta de una experiencia elegante, carta selecta y reservas rápidas por WhatsApp.',
+  phone: '+34 673 66 17 13',
   address: {
-    streetAddress: 'Calle Mayor 123',
-    postalCode: '28013',
-    locality: 'Madrid',
+    streetAddress: 'C. Reyes Catolicos, 47, 11692 Setenil de las Bodegas, Cádiz',
+    postalCode: '11692',
+    locality: 'Setenil de las Bodegas',
     country: 'España',
     countryCode: 'ES'
   },
   whatsappMessage: 'Hola, quiero hacer una reserva',
   menuUrl: 'https://mybakarta.com/Restaurante-mirabueno1',
   mapEmbedUrl:
-    'https://www.google.com/maps?q=Calle+Mayor+123,+28013+Madrid,+Espa%C3%B1a&output=embed',
+    'https://www.google.com/maps?q=C.+Reyes+Catolicos,+47,+11692+Setenil+de+las+Bodegas,+Cádiz,+España&output=embed',
   ogImage:
     'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80',
-  hours: [
-    { label: 'Lunes - Jueves', value: '13:30 - 16:00 · 20:30 - 23:30' },
-    { label: 'Viernes - Sábado', value: '13:30 - 16:30 · 20:30 - 00:00' },
-    { label: 'Domingo', value: '13:30 - 16:30' }
-  ]
+hours: [
+  { label: 'Lunes', value: '9:00 - 17:00' },
+  { label: 'Martes', value: 'Cerrado' },
+  { label: 'Miércoles - Jueves', value: '9:00 - 17:00' },
+  { label: 'Viernes', value: '9:00 - 17:00 · 20:00 - Cierre' },
+  { label: 'Sábado', value: '11:00 - 17:00 · 20:00 - Cierre' },
+  { label: 'Domingo', value: '11:00 - 17:00' }
+]
 };
 
 export const formattedAddress = `${SITE.address.streetAddress}, ${SITE.address.postalCode} ${SITE.address.locality}, ${SITE.address.country}`;

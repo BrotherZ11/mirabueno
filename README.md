@@ -1,4 +1,4 @@
-# Restaurante Mirabueno · Astro
+# Restaurante Venta Mirabueno · Astro
 
 Sitio web responsive para un restaurante premium desarrollado con Astro, TailwindCSS y animaciones suaves con AOS.
 

@@ -18,31 +18,56 @@ const {
   secondaryHref,
   secondaryLabel,
   image,
-  eyebrow = 'Restaurante premium en Madrid'
+  eyebrow = "Restaurante en Setenil de las Bodegas",
 } = Astro.props;
 ---
 
 <section class="relative isolate overflow-hidden">
   <div class="absolute inset-0">
-    <img src={image} alt="Interior elegante del restaurante Mirabueno" class="h-full w-full object-cover" fetchpriority="high" />
-    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,3,0.48),rgba(4,4,3,0.96))]"></div>
-    <div class="absolute inset-x-0 bottom-0 h-72 bg-[radial-gradient(circle_at_bottom,rgba(95,34,33,0.45),transparent_70%)]"></div>
+    <img
+      src={image}
+      alt="Interior elegante del restaurante Venta Mirabueno"
+      class="h-full w-full object-cover"
+      fetchpriority="high"
+    />
+    <div
+      class="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,3,0.48),rgba(4,4,3,0.96))]"
+    >
+    </div>
+    <div
+      class="absolute inset-x-0 bottom-0 h-72 bg-[radial-gradient(circle_at_bottom,rgba(95,34,33,0.45),transparent_70%)]"
+    >
+    </div>
   </div>
 
-  <div class="section-shell relative flex min-h-[88svh] items-center py-24 sm:py-32">
+  <div
+    class="section-shell relative flex min-h-[88svh] items-center py-24 sm:py-32"
+  >
     <div class="max-w-3xl space-y-8" data-aos="fade-up">
       <p class="eyebrow">{eyebrow}</p>
-      <h1 class="max-w-3xl font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+      <h1
+        class="max-w-3xl font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
+      >
         {title}
       </h1>
       <p class="max-w-2xl text-lg text-white/75 sm:text-xl">
         {description}
       </p>
       <div class="flex flex-col gap-4 sm:flex-row">
-        <a href={primaryHref} class="btn-primary justify-center sm:justify-start">{primaryLabel}</a>
-        {secondaryHref && secondaryLabel && (
-          <a href={secondaryHref} class="btn-secondary justify-center sm:justify-start">{secondaryLabel}</a>
-        )}
+        <a
+          href={primaryHref}
+          class="btn-primary justify-center sm:justify-start">{primaryLabel}</a
+        >
+        {
+          secondaryHref && secondaryLabel && (
+            <a
+              href={secondaryHref}
+              class="btn-secondary justify-center sm:justify-start"
+            >
+              {secondaryLabel}
+            </a>
+          )
+        }
       </div>
     </div>
   </div>

@@ -1,41 +1,60 @@
 ---
-import { navLinks, whatsappUrl } from '../consts';
+import { navLinks, whatsappUrl } from "../consts";
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-xl">
+<header
+  class="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-xl"
+>
   <div class="section-shell flex items-center justify-between gap-6 py-4">
-    <a href="/" class="flex items-center gap-3 text-sm tracking-[0.3em] text-white" aria-label="Ir a la página principal de Mirabueno">
-      <span class="flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-primary/15 font-display text-xl text-primary-light">
-        M
+    <a
+      href="/"
+      class="flex items-center gap-3 text-sm tracking-[0.3em] text-white"
+      aria-label="Ir a la página principal de Venta Mirabueno"
+    >
+      <span
+        class="flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-primary/15 font-display text-xl text-primary-light"
+      >
+        Logo
       </span>
       <span>
-        <span class="block font-display text-xl tracking-[0.12em]">Mirabueno</span>
-        <span class="text-xs uppercase tracking-[0.35em] text-white/60">Madrid · España</span>
+        <span class="block font-display text-xl tracking-[0.12em]"
+          >Venta Mirabueno</span
+        >
+        <span class="text-xs uppercase tracking-[0.35em] text-white/60"
+          >Setenil de las Bodegas · España</span
+        >
       </span>
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href;
-        return (
-          <a
-            href={link.href}
-            class:list={[
-              'text-sm uppercase tracking-[0.25em] transition duration-300 hover:text-primary-light',
-              isActive ? 'text-primary-light' : 'text-white/70'
-            ]}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+    <nav
+      class="hidden items-center gap-8 md:flex"
+      aria-label="Navegación principal"
+    >
+      {
+        navLinks.map((link) => {
+          const isActive = currentPath === link.href;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "text-sm uppercase tracking-[0.25em] transition duration-300 hover:text-primary-light",
+                isActive ? "text-primary-light" : "text-white/70",
+              ]}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
     </nav>
 
     <div class="hidden md:block">
-      <a href={whatsappUrl} class="btn-primary" target="_blank" rel="noreferrer">Reservar</a>
+      <a href={whatsappUrl} class="btn-primary" target="_blank" rel="noreferrer"
+        >Reservar</a
+      >
     </div>
 
     <button
@@ -47,45 +66,65 @@ const currentPath = Astro.url.pathname;
       type="button"
     >
       <span class="sr-only">Abrir menú</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      >
+        <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
       </svg>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-white/10 bg-background/95 md:hidden">
-    <nav class="section-shell flex flex-col gap-4 py-5" aria-label="Navegación móvil">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href;
-        return (
-          <a
-            href={link.href}
-            class:list={[
-              'rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.25em] transition duration-300',
-              isActive
-                ? 'border-primary/50 bg-primary/10 text-primary-light'
-                : 'border-white/10 bg-white/5 text-white/75 hover:border-primary/30 hover:text-white'
-            ]}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
-      <a href={whatsappUrl} class="btn-primary text-center" target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-white/10 bg-background/95 md:hidden"
+  >
+    <nav
+      class="section-shell flex flex-col gap-4 py-5"
+      aria-label="Navegación móvil"
+    >
+      {
+        navLinks.map((link) => {
+          const isActive = currentPath === link.href;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.25em] transition duration-300",
+                isActive
+                  ? "border-primary/50 bg-primary/10 text-primary-light"
+                  : "border-white/10 bg-white/5 text-white/75 hover:border-primary/30 hover:text-white",
+              ]}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+      <a
+        href={whatsappUrl}
+        class="btn-primary text-center"
+        target="_blank"
+        rel="noreferrer">Reservar por WhatsApp</a
+      >
     </nav>
   </div>
 </header>
 
 <script>
-  const toggle = document.querySelector('#nav-toggle');
-  const menu = document.querySelector('#mobile-menu');
+  const toggle = document.querySelector("#nav-toggle");
+  const menu = document.querySelector("#mobile-menu");
 
   if (toggle instanceof HTMLButtonElement && menu instanceof HTMLElement) {
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      menu.classList.toggle('hidden');
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      menu.classList.toggle("hidden");
     });
   }
 </script>
