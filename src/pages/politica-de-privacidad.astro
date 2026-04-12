@@ -1,0 +1,155 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, formattedAddress } from "../consts";
+
+const rightsContact =
+  SITE.legal.rightsEmail ||
+  SITE.legal.contactEmail ||
+  `${SITE.phone} o ${formattedAddress}`;
+---
+
+<BaseLayout
+  title={`Política de privacidad | ${SITE.legalName}`}
+  description={`Política de privacidad y protección de datos de ${SITE.legalName} conforme al RGPD.`}
+  pathname="/politica-de-privacidad"
+>
+  <section class="section-shell py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <header class="panel">
+        <p class="eyebrow">Protección de datos</p>
+        <h1 class="mt-3 font-display text-3xl text-text sm:text-5xl">
+          Política de privacidad
+        </h1>
+        <p class="mt-5 text-base leading-7 text-text/72 sm:text-lg">
+          Esta política informa sobre el tratamiento de datos personales
+          realizado a través de este sitio web, conforme al Reglamento (UE)
+          2016/679 y a la normativa española aplicable en materia de protección
+          de datos.
+        </p>
+        <p class="mt-4 text-sm text-text/55">
+          Última actualización: {SITE.legal.lastUpdated}
+        </p>
+      </header>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Responsable del tratamiento
+        </h2>
+        <ul class="space-y-3 text-text/72">
+          <li><strong>Responsable:</strong> {SITE.legal.ownerName}</li>
+          <li><strong>Dirección:</strong> {formattedAddress}</li>
+          <li><strong>Teléfono:</strong> {SITE.phone}</li>
+          <li>
+            <strong>Correo electrónico:</strong>{" "}
+            {
+              SITE.legal.contactEmail ||
+                "Pendiente de facilitar por el titular."
+            }
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Finalidades del tratamiento
+        </h2>
+        <ul class="space-y-3 text-text/72">
+          <li>
+            Atender consultas recibidas por teléfono o por los canales enlazados
+            desde la web.
+          </li>
+          <li>
+            Gestionar solicitudes de reserva recibidas a través de WhatsApp.
+          </li>
+          <li>
+            Medir el rendimiento y uso del sitio con herramientas analíticas
+            configuradas por el titular.
+          </li>
+          <li>
+            Mostrar información pública del negocio, como ubicación, carta y
+            reseñas visibles en servicios de terceros.
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Base jurídica</h2>
+        <ul class="space-y-3 text-text/72">
+          <li>
+            <strong>Ejecución de medidas precontractuales:</strong> cuando el usuario
+            solicita una reserva o información previa.
+          </li>
+          <li>
+            <strong>Interés legítimo:</strong> para mantener la seguridad del sitio
+            y obtener métricas agregadas de funcionamiento.
+          </li>
+          <li>
+            <strong>Consentimiento:</strong> cuando resulte exigible para tecnologías
+            de terceros o futuras finalidades adicionales.
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Datos tratados</h2>
+        <p class="text-text/72">
+          Dependiendo de la interacción, pueden tratarse datos identificativos y
+          de contacto, como nombre, teléfono, contenido del mensaje de WhatsApp,
+          información facilitada para la reserva, así como datos técnicos
+          derivados de la navegación y del uso de servicios embebidos o
+          analíticos.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Conservación</h2>
+        <p class="text-text/72">
+          Los datos se conservarán durante el tiempo necesario para atender la
+          solicitud del usuario y, posteriormente, durante los plazos exigidos
+          por la normativa aplicable o mientras puedan derivarse
+          responsabilidades.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Destinatarios y encargados
+        </h2>
+        <ul class="space-y-3 text-text/72">
+          <li>
+            WhatsApp, si el usuario utiliza ese canal para reservar o contactar.
+          </li>
+          <li>
+            Google, si el usuario acepta la carga del mapa embebido en la página
+            de contacto. Las reseñas públicas del negocio se consultan en build,
+            sin depender de datos de navegación del visitante.
+          </li>
+          <li>
+            Vercel, en caso de alojamiento del sitio y uso de Vercel Analytics.
+          </li>
+        </ul>
+        <p class="text-text/72">
+          Algunos de estos proveedores pueden tratar datos fuera del Espacio
+          Económico Europeo, aplicando las garantías que correspondan según su
+          documentación y condiciones contractuales.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Derechos</h2>
+        <p class="text-text/72">
+          El usuario puede ejercer sus derechos de acceso, rectificación,
+          supresión, oposición, limitación y portabilidad, así como retirar el
+          consentimiento cuando proceda, contactando a través de {
+            rightsContact
+          }.
+        </p>
+        <p class="text-text/72">
+          También podrá presentar una reclamación ante la Agencia Española de
+          Protección de Datos si considera que el tratamiento no se ajusta a la
+          normativa vigente.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

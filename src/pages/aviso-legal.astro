@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, formattedAddress } from "../consts";
+
+const missingTaxId = !SITE.legal.taxId;
+const missingEmail = !SITE.legal.contactEmail;
+---
+
+<BaseLayout
+  title={`Aviso legal | ${SITE.legalName}`}
+  description={`Aviso legal de ${SITE.legalName}, con la información del titular del sitio y condiciones de uso.`}
+  pathname="/aviso-legal"
+>
+  <section class="section-shell py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <header class="panel">
+        <p class="eyebrow">Información legal</p>
+        <h1 class="mt-3 font-display text-3xl text-text sm:text-5xl">
+          Aviso legal
+        </h1>
+        <p class="mt-5 text-base leading-7 text-text/72 sm:text-lg">
+          Este sitio web cumple con las obligaciones de información previstas en
+          la Ley 34/2002, de Servicios de la Sociedad de la Información y de
+          Comercio Electrónico.
+        </p>
+        <p class="mt-4 text-sm text-text/55">
+          Última actualización: {SITE.legal.lastUpdated}
+        </p>
+      </header>
+
+      {
+        (missingTaxId || missingEmail) && (
+          <article class="panel border-primary/20 bg-primary/6">
+            <h2 class="font-display text-xl text-text sm:text-2xl">
+              Datos pendientes de completar
+            </h2>
+            <p class="mt-4 text-text/72">
+              Antes de publicar definitivamente esta página, conviene completar
+              el NIF/CIF y un correo electrónico de contacto directo del
+              titular.
+            </p>
+          </article>
+        )
+      }
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Titular del sitio web</h2>
+        <ul class="space-y-3 text-text/72">
+          <li><strong>Denominación:</strong> {SITE.legal.ownerName}</li>
+          <li><strong>Dominio:</strong> {SITE.siteUrl}</li>
+          <li><strong>Dirección:</strong> {formattedAddress}</li>
+          <li><strong>Teléfono:</strong> {SITE.phone}</li>
+          <li>
+            <strong>Correo electrónico:</strong>{" "}
+            {
+              SITE.legal.contactEmail ||
+                "Pendiente de facilitar por el titular."
+            }
+          </li>
+          <li>
+            <strong>NIF/CIF:</strong>{" "}
+            {SITE.legal.taxId || "Pendiente de facilitar por el titular."}
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Condiciones de uso</h2>
+        <p class="text-text/72">
+          El acceso y navegación por este sitio web atribuye la condición de
+          usuario e implica la aceptación de las presentes condiciones de uso.
+          El usuario se compromete a utilizar el sitio, sus contenidos y
+          servicios de conformidad con la ley, la buena fe, el orden público y
+          las presentes condiciones.
+        </p>
+        <p class="text-text/72">
+          Queda prohibido utilizar el sitio con fines ilícitos o lesivos, o de
+          cualquier forma que pueda causar perjuicio al titular o a terceros.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Propiedad intelectual e industrial
+        </h2>
+        <p class="text-text/72">
+          Los contenidos de este sitio web, incluyendo textos, imágenes, diseño,
+          marcas, logotipos, estructura y código fuente, están protegidos por la
+          normativa sobre propiedad intelectual e industrial y corresponden al
+          titular del sitio o a terceros que han autorizado su uso.
+        </p>
+        <p class="text-text/72">
+          No se permite su reproducción, distribución, comunicación pública,
+          transformación o cualquier otra forma de explotación sin autorización
+          expresa del titular, salvo en los casos legalmente permitidos.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Responsabilidad</h2>
+        <p class="text-text/72">
+          El titular procura que la información publicada sea correcta y esté
+          actualizada, pero no garantiza la inexistencia de errores ni la
+          disponibilidad permanente del sitio web. El titular no se hace
+          responsable de los daños derivados del uso del sitio, de
+          interrupciones del servicio o de la presencia de virus u otros
+          elementos nocivos ajenos a su control.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Enlaces externos y alojamiento
+        </h2>
+        <p class="text-text/72">
+          Este sitio puede incluir enlaces a servicios de terceros, como
+          WhatsApp, Google Maps o menús alojados externamente. El titular no se
+          responsabiliza del contenido, políticas o funcionamiento de esos
+          sitios externos.
+        </p>
+        <p class="text-text/72">
+          El sitio se apoya en servicios tecnológicos de terceros para su
+          alojamiento y analítica. Proveedor indicado en la configuración
+          actual: <a
+            class="font-semibold text-primary hover:text-primary-light"
+            href={SITE.legal.hostingWebsite}
+            target="_blank"
+            rel="noreferrer">{SITE.legal.hostingProvider}</a
+          >.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Legislación aplicable</h2>
+        <p class="text-text/72">
+          La relación entre el titular y el usuario se regirá por la normativa
+          española vigente. Para cualquier controversia que pudiera derivarse
+          del acceso o uso del sitio web, las partes se someterán a los juzgados
+          y tribunales que correspondan conforme a la legislación aplicable.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
