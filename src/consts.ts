@@ -1,10 +1,10 @@
 export const SITE = {
-  name: 'Venta Mirabueno',
-  legalName: 'Restaurante Venta Mirabueno',
-  siteUrl: 'https://ventamirabueno.com',
-  defaultTitle: 'Restaurante Venta Mirabueno | Cocina mediterránea premium en Setenil de las Bodegas',
+  name: 'Mirabueno',
+  legalName: 'Mirabueno Casa de Comidas',
+  siteUrl: 'https://mirabuenocasadecomidas.es',
+  defaultTitle: 'Mirabueno | Casa de Comidas',
   defaultDescription:
-    'Restaurante Venta Mirabueno, cocina mediterránea premium en Setenil de las Bodegas. Disfruta de una experiencia elegante, carta selecta y reservas rápidas por WhatsApp.',
+    'Mirabueno Casa de Comidas, Sabor, Tiempo y Respeto. Disfruta de una experiencia elegante, carta selecta y reservas rápidas por WhatsApp.',
   phone: '+34 673 66 17 13',
   address: {
     streetAddress: 'C. Reyes Catolicos, 47, 11692 Setenil de las Bodegas, Cádiz',
@@ -18,7 +18,7 @@ export const SITE = {
   mapEmbedUrl:
     'https://www.google.com/maps?q=C.+Reyes+Catolicos,+47,+11692+Setenil+de+las+Bodegas,+Cádiz,+España&output=embed',
   ogImage:
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80',
+    'https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg',
 hours: [
   { label: 'Lunes', value: '9:00 - 17:00' },
   { label: 'Martes', value: 'Cerrado' },

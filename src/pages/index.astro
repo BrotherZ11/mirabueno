@@ -1,5 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
+import Reviews from "../components/Reviews.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, phoneUrl, whatsappUrl } from "../consts";
@@ -34,8 +35,8 @@ const galleryImages = [
 ---
 
 <BaseLayout
-  title="Restaurante Venta Mirabueno | Reserva una experiencia gastronómica premium en Setenil de las Bodegas"
-  description="Descubre Venta Mirabueno, restaurante premium en Setenil de las Bodegas con cocina mediterránea de autor, carta selecta y reservas rápidas por WhatsApp."
+  title=" Mirabueno | Sabor, Tiempo y Respeto"
+  description=" Mirabueno, Tradición con autoridad mediterránea en Setenil de las Bodegas, reservas rápidas por WhatsApp."
   pathname="/"
 >
   <Hero
@@ -55,51 +56,11 @@ const galleryImages = [
       <SectionHeading
         eyebrow="Sobre nosotros"
         title="Cocina con carácter, servicio cercano y un ambiente que invita a quedarse."
-        description="En Venta Mirabueno reinterpretamos la tradición mediterránea con una puesta en escena contemporánea, ingredientes de temporada y una atención pensada para ocasiones especiales y encuentros cotidianos."
+        description="En Mirabueno Casa de Comidas reinterpretamos la tradición mediterránea con una puesta en escena contemporánea, ingredientes de temporada y una atención pensada para ocasiones especiales y encuentros cotidianos."
       />
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2 sm:gap-5" data-aos="fade-left">
-      <article class="panel">
-        <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
-          >Producto</span
-        >
-        <h3 class="mt-4 font-display text-2xl text-text">Selección diaria</h3>
-        <p class="mt-3 text-text/70">
-          Materia prima fresca y una carta que evoluciona con el ritmo de la
-          temporada.
-        </p>
-      </article>
-      <article class="panel">
-        <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
-          >Ambiente</span
-        >
-        <h3 class="mt-4 font-display text-2xl text-text">Espacio elegante</h3>
-        <p class="mt-3 text-text/70">
-          Luz tenue, diseño sofisticado y mesas pensadas para una velada cómoda.
-        </p>
-      </article>
-      <article class="panel sm:col-span-2">
-        <div
-          class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
-        >
-          <div>
-            <span class="text-sm uppercase tracking-[0.3em] text-primary-light"
-              >Reserva directa</span
-            >
-            <h3 class="mt-4 font-display text-xl text-text sm:text-2xl">
-              Confirmación rápida por WhatsApp
-            </h3>
-          </div>
-          <a
-            href={whatsappUrl}
-            class="btn-secondary w-full justify-center md:w-auto"
-            target="_blank"
-            rel="noreferrer">Solicitar mesa</a
-          >
-        </div>
-      </article>
-    </div>
+    <Reviews />
   </section>
 
   <section class="section-shell py-14 sm:py-20">
@@ -157,7 +118,7 @@ const galleryImages = [
           >
             <img
               src={image}
-              alt={`Ambiente gastronómico en Venta Mirabueno ${index + 1}`}
+              alt={`Ambiente gastronómico en Mirabueno ${index + 1}`}
               class="h-64 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-80"
               loading="lazy"
               decoding="async"
@@ -180,7 +141,7 @@ const galleryImages = [
         <div data-aos="fade-right">
           <p class="eyebrow">Reserva tu mesa</p>
           <h2 class="mt-3 font-display text-3xl text-text sm:text-5xl">
-            Haz tu reserva en segundos y vive Venta Mirabueno.
+            Haz tu reserva en segundos y vive Mirabueno Casa de Comidas.
           </h2>
           <p class="mt-5 max-w-2xl text-base leading-7 text-text/70 sm:text-lg">
             Ideal para cenas especiales, reuniones o una escapada gastronómica

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fdfbfa;
-  --color-surface: #ffffff;
-  --color-surface-soft: #f6f0ec;
-  --color-primary: #602626;
-  --color-primary-light: #8c4f4f;
-  --color-text: #181312;
-  --font-display: "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
-  --shadow-wine: 0 24px 60px rgba(96, 38, 38, 0.12);
+  --color-background: #f3f0e9;
+  --color-surface: #f9f9f9;
+  --color-surface-soft: #efeae1;
+  --color-primary: #612628;
+  --color-primary-light: #8f5a5c;
+  --color-text: #1a1a1a;
+  --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --shadow-wine: 0 24px 60px rgba(97, 38, 40, 0.12);
 }
 
 @layer base {
@@ -20,13 +20,13 @@
   body {
     @apply bg-background font-sans text-text antialiased;
     background-image:
-      radial-gradient(circle at top, rgba(96, 38, 38, 0.12), transparent 34%),
-      linear-gradient(180deg, #fdfbfa 0%, #f6f0ec 100%);
+      radial-gradient(circle at top, rgba(97, 38, 40, 0.1), transparent 34%),
+      linear-gradient(180deg, #f3f0e9 0%, #f9f9f9 100%);
   }
 
   ::selection {
-    background: rgba(96, 38, 38, 0.2);
-    color: #fff;
+    background: rgba(97, 38, 40, 0.18);
+    color: #1a1a1a;
   }
 
   a,
@@ -41,15 +41,15 @@
   }
 
   .panel {
-    @apply relative rounded-[1.75rem] border border-black/8 bg-white/82 p-5 shadow-wine backdrop-blur-sm sm:rounded-[2rem] sm:p-8;
+    @apply relative rounded-[1.75rem] border border-black/8 bg-surface/92 p-5 shadow-wine backdrop-blur-sm sm:rounded-[2rem] sm:p-8;
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/70 bg-primary px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-white shadow-wine hover:-translate-y-0.5 hover:bg-[#7a3131] sm:px-6 sm:text-sm sm:tracking-[0.25em];
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/70 bg-primary px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-surface shadow-wine hover:-translate-y-0.5 hover:bg-[#4f1f21] sm:px-6 sm:text-sm sm:tracking-[0.25em];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary sm:px-6 sm:text-sm sm:tracking-[0.25em];
+    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-surface px-5 py-3 text-center text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary sm:px-6 sm:text-sm sm:tracking-[0.25em];
   }
 
   .eyebrow {

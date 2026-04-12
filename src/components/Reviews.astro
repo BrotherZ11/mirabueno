@@ -1,0 +1,74 @@
+---
+import { whatsappUrl } from "../consts";
+import { getGoogleReviews } from "../lib/google-reviews.ts";
+
+const reviewsData = await getGoogleReviews({
+  apiKey: import.meta.env.GOOGLE_PLACES_API_KEY,
+  placeId: import.meta.env.GOOGLE_PLACE_ID,
+  allowRefresh: import.meta.env.PROD,
+});
+
+const averageRating = reviewsData.rating.toFixed(1);
+const fetchedDate = new Intl.DateTimeFormat("es-ES", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+}).format(new Date(reviewsData.fetchedAt));
+
+const getStars = (rating: number) =>
+  "★".repeat(Math.max(1, Math.round(rating)));
+---
+
+<div class="grid gap-4 sm:grid-cols-2 sm:gap-5" data-aos="fade-left">
+  <article class="panel sm:col-span-2">
+    <div
+      class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+    >
+      <div>
+        <span class="text-sm uppercase tracking-[0.3em] text-primary-light">
+          Reseñas de Google
+        </span>
+        <h3 class="mt-4 font-display text-xl text-text sm:text-2xl">
+          Lo que dicen quienes ya se han sentado a la mesa.
+        </h3>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 text-sm text-text/70">
+        <span
+          class="rounded-full border border-primary/20 bg-primary/8 px-3 py-1 font-semibold text-primary"
+        >
+          {averageRating} / 5
+        </span>
+        <span>{reviewsData.userRatingsTotal} reseñas</span>
+      </div>
+    </div>
+  </article>
+
+  {
+    reviewsData.reviews.map((review, index) => (
+      <article
+        class:list={[
+          "panel flex flex-col justify-between gap-5",
+          index === 0 ? "sm:col-span-2" : undefined,
+        ]}
+      >
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-sm tracking-[0.2em] text-primary">
+              {getStars(review.rating)}
+            </span>
+            <span class="text-sm text-text/55">
+              {review.relativeTimeDescription}
+            </span>
+          </div>
+
+          <p class="mt-4 text-lg leading-8 text-text sm:text-xl sm:leading-9">
+            “{review.text}”
+          </p>
+        </div>
+
+        <p class="text-sm text-text/60">{review.authorName}</p>
+      </article>
+    ))
+  }
+</div>
