@@ -1,9 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, formattedAddress } from "../consts";
-
-const missingTaxId = !SITE.legal.taxId;
-const missingEmail = !SITE.legal.contactEmail;
 ---
 
 <BaseLayout
@@ -19,29 +16,15 @@ const missingEmail = !SITE.legal.contactEmail;
           Aviso legal
         </h1>
         <p class="mt-5 text-base leading-7 text-text/72 sm:text-lg">
-          Este sitio web cumple con las obligaciones de información previstas en
-          la Ley 34/2002, de Servicios de la Sociedad de la Información y de
-          Comercio Electrónico.
+          Este sitio web ofrece información sobre el restaurante, su carta,
+          formas de contacto y vías de reserva, de conformidad con la normativa
+          española aplicable y, en particular, con la Ley 34/2002, de Servicios
+          de la Sociedad de la Información y de Comercio Electrónico.
         </p>
         <p class="mt-4 text-sm text-text/55">
           Última actualización: {SITE.legal.lastUpdated}
         </p>
       </header>
-
-      {
-        (missingTaxId || missingEmail) && (
-          <article class="panel border-primary/20 bg-primary/6">
-            <h2 class="font-display text-xl text-text sm:text-2xl">
-              Datos pendientes de completar
-            </h2>
-            <p class="mt-4 text-text/72">
-              Antes de publicar definitivamente esta página, conviene completar
-              el NIF/CIF y un correo electrónico de contacto directo del
-              titular.
-            </p>
-          </article>
-        )
-      }
 
       <article class="panel space-y-4">
         <h2 class="font-display text-2xl text-text">Titular del sitio web</h2>
@@ -77,6 +60,12 @@ const missingEmail = !SITE.legal.contactEmail;
           Queda prohibido utilizar el sitio con fines ilícitos o lesivos, o de
           cualquier forma que pueda causar perjuicio al titular o a terceros.
         </p>
+        <p class="text-text/72">
+          La información publicada en esta web tiene carácter informativo y
+          comercial. La disponibilidad de platos, horarios, precios y servicios
+          puede variar, por lo que el titular podrá actualizar los contenidos en
+          cualquier momento sin necesidad de previo aviso.
+        </p>
       </article>
 
       <article class="panel space-y-4">
@@ -106,6 +95,12 @@ const missingEmail = !SITE.legal.contactEmail;
           interrupciones del servicio o de la presencia de virus u otros
           elementos nocivos ajenos a su control.
         </p>
+        <p class="text-text/72">
+          Tampoco responde de decisiones adoptadas por el usuario únicamente a
+          partir de la información contenida en esta web cuando resulte
+          necesario confirmar previamente una reserva, un horario o una
+          disponibilidad concreta.
+        </p>
       </article>
 
       <article class="panel space-y-4">
@@ -119,9 +114,10 @@ const missingEmail = !SITE.legal.contactEmail;
           sitios externos.
         </p>
         <p class="text-text/72">
-          El sitio se apoya en servicios tecnológicos de terceros para su
-          alojamiento y analítica. Proveedor indicado en la configuración
-          actual: <a
+          El sitio se aloja en infraestructura de terceros y puede apoyarse en
+          servicios adicionales de analítica o contenidos embebidos si el
+          usuario los acepta. Proveedor de alojamiento indicado en la
+          configuración actual: <a
             class="font-semibold text-primary hover:text-primary-light"
             href={SITE.legal.hostingWebsite}
             target="_blank"

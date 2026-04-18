@@ -15,7 +15,7 @@ npm run dev
 
 ## Variables de entorno
 
-- GOOGLE_PLACES_API_KEY · clave de Google Places usada solo en build con Places API (New) habilitada.
+- GOOGLE_PLACES_API_KEY · clave de Google Places usada solo en build con Places API.
 - GOOGLE_PLACE_ID · identificador del negocio en Google.
 
 Las reseñas se consultan en build y se guardan en una caché local en src/data/google-reviews-cache.json. Si la caché tiene menos de 24 horas, no se vuelve a pedir nada a Google.

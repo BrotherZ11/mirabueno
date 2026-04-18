@@ -1,5 +1,4 @@
 ---
-import { whatsappUrl } from "../consts";
 import { getGoogleReviews } from "../lib/google-reviews.ts";
 
 const reviewsData = await getGoogleReviews({
@@ -9,11 +8,6 @@ const reviewsData = await getGoogleReviews({
 });
 
 const averageRating = reviewsData.rating.toFixed(1);
-const fetchedDate = new Intl.DateTimeFormat("es-ES", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-}).format(new Date(reviewsData.fetchedAt));
 
 const getStars = (rating: number) =>
   "★".repeat(Math.max(1, Math.round(rating)));
