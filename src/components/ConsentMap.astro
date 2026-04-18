@@ -44,7 +44,45 @@ const { src, title } = Astro.props;
 
 <script>
   const mapConsentKey = "mirabueno-cookie-consent";
-  type ConsentValue = "accepted" | "rejected";
+  type ConsentPreferences = {
+    analytics: boolean;
+    thirdParty: boolean;
+  };
+
+  const isPreferences = (value: unknown): value is ConsentPreferences => {
+    if (!value || typeof value !== "object") {
+      return false;
+    }
+
+    const candidate = value as Record<string, unknown>;
+    return (
+      typeof candidate.analytics === "boolean" &&
+      typeof candidate.thirdParty === "boolean"
+    );
+  };
+
+  const parseStoredConsent = (): ConsentPreferences | null => {
+    const storedConsent = window.localStorage.getItem(mapConsentKey);
+
+    if (!storedConsent) {
+      return null;
+    }
+
+    if (storedConsent === "accepted") {
+      return { analytics: true, thirdParty: true };
+    }
+
+    if (storedConsent === "rejected") {
+      return { analytics: false, thirdParty: false };
+    }
+
+    try {
+      const parsed = JSON.parse(storedConsent) as unknown;
+      return isPreferences(parsed) ? parsed : null;
+    } catch {
+      return null;
+    }
+  };
 
   const mountMap = (container: Element) => {
     if (
@@ -67,10 +105,10 @@ const { src, title } = Astro.props;
     container.dataset.loaded = "true";
   };
 
-  const syncConsentMaps = (consentValue: ConsentValue | null) => {
+  const syncConsentMaps = (preferences: ConsentPreferences | null) => {
     const maps = document.querySelectorAll("[data-consent-map]");
     maps.forEach((map) => {
-      if (consentValue === "accepted") {
+      if (preferences?.thirdParty) {
         mountMap(map);
       }
     });
@@ -78,27 +116,33 @@ const { src, title } = Astro.props;
 
   document.querySelectorAll("[data-consent-map-accept]").forEach((button) => {
     button.addEventListener("click", () => {
+      const currentPreferences = parseStoredConsent() ?? {
+        analytics: false,
+        thirdParty: false,
+      };
+
       window.dispatchEvent(
         new CustomEvent("mirabueno:set-cookie-consent", {
-          detail: { value: "accepted" },
+          detail: {
+            preferences: {
+              ...currentPreferences,
+              thirdParty: true,
+            },
+          },
         }),
       );
     });
   });
 
-  const storedConsent = window.localStorage.getItem(mapConsentKey);
-  const initialConsent: ConsentValue | null =
-    storedConsent === "accepted" || storedConsent === "rejected"
-      ? storedConsent
-      : null;
-
-  syncConsentMaps(initialConsent);
+  syncConsentMaps(parseStoredConsent());
 
   window.addEventListener("mirabueno:cookie-consent", (event: Event) => {
     if (!(event instanceof CustomEvent)) {
       return;
     }
 
-    syncConsentMaps((event.detail?.value as ConsentValue | null) ?? null);
+    syncConsentMaps(
+      isPreferences(event.detail?.preferences) ? event.detail.preferences : null,
+    );
   });
 </script>

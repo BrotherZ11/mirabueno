@@ -1,7 +1,6 @@
 ---
 import "aos/dist/aos.css";
 import CookieConsent from "../components/CookieConsent.astro";
-import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 import Footer from "../components/Footer.astro";
@@ -85,13 +84,14 @@ const schema = {
     </main>
     <Footer />
     <CookieConsent />
-    <Analytics />
-
     <script>
       import AOS from "aos";
       import { inject } from "@vercel/analytics";
 
-      type ConsentValue = "accepted" | "rejected" | null;
+      type ConsentPreferences = {
+        analytics: boolean;
+        thirdParty: boolean;
+      };
 
       declare global {
         interface Window {
@@ -101,23 +101,60 @@ const schema = {
 
       const cookieConsentKey = "mirabueno-cookie-consent";
 
-      const dispatchConsent = (value: ConsentValue) => {
+      const isPreferences = (value: unknown): value is ConsentPreferences => {
+        if (!value || typeof value !== "object") {
+          return false;
+        }
+
+        const candidate = value as Record<string, unknown>;
+        return (
+          typeof candidate.analytics === "boolean" &&
+          typeof candidate.thirdParty === "boolean"
+        );
+      };
+
+      const parseStoredConsent = (): ConsentPreferences | null => {
+        const storedConsent = window.localStorage.getItem(cookieConsentKey);
+
+        if (!storedConsent) {
+          return null;
+        }
+
+        if (storedConsent === "accepted") {
+          return { analytics: true, thirdParty: true };
+        }
+
+        if (storedConsent === "rejected") {
+          return { analytics: false, thirdParty: false };
+        }
+
+        try {
+          const parsed = JSON.parse(storedConsent) as unknown;
+          return isPreferences(parsed) ? parsed : null;
+        } catch {
+          return null;
+        }
+      };
+
+      const dispatchConsent = (preferences: ConsentPreferences | null) => {
         window.dispatchEvent(
           new CustomEvent("mirabueno:cookie-consent", {
-            detail: { value },
+            detail: { preferences },
           }),
         );
       };
 
-      const applyConsent = (value: ConsentValue) => {
-        document.documentElement.dataset.cookieConsent = value || "pending";
+      const applyConsent = (preferences: ConsentPreferences | null) => {
+        document.documentElement.dataset.cookieConsent = preferences ? "configured" : "pending";
+        document.documentElement.dataset.cookieAnalytics = preferences?.analytics ? "accepted" : "rejected";
+        document.documentElement.dataset.cookieThirdParty = preferences?.thirdParty ? "accepted" : "rejected";
 
-        if (value === "accepted" && !window.__mirabuenoAnalyticsLoaded) {
+        if (preferences?.analytics && !window.__mirabuenoAnalyticsLoaded) {
           inject();
           window.__mirabuenoAnalyticsLoaded = true;
         }
 
-        dispatchConsent(value);
+        dispatchConsent(preferences);
       };
 
       const initAos = () => {
@@ -129,9 +166,7 @@ const schema = {
         });
       };
 
-      const storedConsent = window.localStorage.getItem(cookieConsentKey);
-
-      applyConsent((storedConsent as ConsentValue) ?? null);
+      applyConsent(parseStoredConsent());
       initAos();
 
       window.addEventListener(
@@ -141,15 +176,16 @@ const schema = {
             return;
           }
 
-          const value =
-            (event.detail?.value as ConsentValue | undefined) ?? null;
+          const preferences = isPreferences(event.detail?.preferences)
+            ? event.detail.preferences
+            : null;
 
-          if (value !== "accepted" && value !== "rejected") {
+          if (!preferences) {
             return;
           }
 
-          window.localStorage.setItem(cookieConsentKey, value);
-          applyConsent(value);
+          window.localStorage.setItem(cookieConsentKey, JSON.stringify(preferences));
+          applyConsent(preferences);
         },
       );
 
