@@ -1,7 +1,11 @@
 ---
+import ArrozImage from "../assets/arroz.webp";
+import EnsaladillaImage from "../assets/ensaladilla.webp";
 import Hero from "../components/Hero.astro";
 import Reviews from "../components/Reviews.astro";
+import SalaImage from "../assets/sala.webp";
 import SectionHeading from "../components/SectionHeading.astro";
+import TapaImage from "../assets/tapa.webp";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, phoneUrl } from "../consts";
 
@@ -27,10 +31,10 @@ const featuredDishes = [
 ];
 
 const galleryImages = [
-  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg",
-  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-02-f9-02f99c70-3dea-43c4-88d2-63814f77f01e-20060-venta-mirabueno-0ac31fafb11b4c73922a2daa5a199026.jpeg",
-  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-f4-fb-f4fb8fd1-1690-4b24-82a6-cbe5c4551a9c-20060-venta-mirabueno-e5ed3756a6734c3e94dfe569d36cd7c5.jpeg",
-  "https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-19-e4-19e49abf-4672-492f-bfe9-a6c1462bb3a4-20060-venta-mirabueno-2eecb8f7dd144d5893522cc06884d400.jpeg",
+  SalaImage.src,
+  TapaImage.src,
+  ArrozImage.src,
+  EnsaladillaImage.src,
 ];
 ---
 
@@ -46,7 +50,7 @@ const galleryImages = [
     primaryLabel="Reservar ahora"
     secondaryHref="/carta"
     secondaryLabel="Ver carta"
-    image="https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg"
+    image={SalaImage.src}
   />
 
   <section

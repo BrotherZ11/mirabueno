@@ -1,4 +1,5 @@
 import { siteConfig } from '../site.config.mjs';
+import SalaImage from './assets/sala.webp';
 
 export const SITE = {
   name: 'Mirabueno',
@@ -9,10 +10,10 @@ export const SITE = {
     'Mirabueno Casa de Comidas, Sabor, Tiempo y Respeto. Disfruta de una experiencia elegante, carta selecta y reservas rápidas por WhatsApp.',
   phone: '+34 673 66 17 13',
   address: {
-    streetAddress: 'C. Reyes Catolicos, 47',
+    streetAddress: 'C. Reyes Católicos, 47',
     postalCode: '11692',
     locality: 'Setenil de las Bodegas',
-    region: 'Cadiz',
+    region: 'Cádiz',
     country: 'España',
     countryCode: 'ES'
   },
@@ -20,8 +21,7 @@ export const SITE = {
   menuUrl: 'https://mybakarta.com/Restaurante-mirabueno1',
   mapEmbedUrl:
     'https://www.google.com/maps?q=C.+Reyes+Catolicos,+47,+11692+Setenil+de+las+Bodegas,+Cádiz,+España&output=embed',
-  ogImage:
-    'https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-56-9e-569eeefb-65be-4398-a3f4-9d3cef43e9a0-20060-venta-mirabueno-f2f860d1a7524f11b4850bf4d538735c.jpeg',
+  ogImage: SalaImage.src,
   legal: {
     ownerName: siteConfig.legal.ownerName,
     taxId: siteConfig.legal.taxId,
