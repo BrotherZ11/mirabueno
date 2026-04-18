@@ -6,7 +6,7 @@ import "../styles/global.css";
 
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import { SITE, formattedAddress, whatsappUrl } from "../consts";
+import { SITE, formattedAddress, socialLinks, whatsappUrl } from "../consts";
 
 interface Props {
   title?: string;
@@ -44,7 +44,7 @@ const schema = {
     "@type": "OpeningHoursSpecification",
     description: `${slot.label}: ${slot.value}`,
   })),
-  sameAs: [SITE.menuUrl, whatsappUrl],
+  sameAs: [SITE.menuUrl, whatsappUrl, ...socialLinks.map((link) => link.href)],
   areaServed: formattedAddress,
 };
 ---

@@ -5,6 +5,7 @@ import {
   legalLinks,
   navLinks,
   phoneUrl,
+  socialLinks,
 } from "../consts";
 ---
 
@@ -21,6 +22,53 @@ import {
         Cocina mediterránea de autor, ambiente elegante y una atención pensada
         para convertir cada visita en un momento especial.
       </p>
+      <div>
+        <h3 class="font-display text-lg text-text sm:text-xl">Síguenos</h3>
+        <ul class="mt-4 flex flex-wrap gap-3 text-sm text-text/70" aria-label="Redes sociales">
+          {
+            socialLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={link.ariaLabel}
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-surface text-text transition hover:border-primary/30 hover:text-primary-light"
+                >
+                  {
+                    link.label === "Instagram" ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        class="h-5 w-5"
+                        aria-hidden="true"
+                      >
+                        <rect x="3.75" y="3.75" width="16.5" height="16.5" rx="4.5"></rect>
+                        <circle cx="12" cy="12" r="3.75"></circle>
+                        <circle cx="17.25" cy="6.75" r="0.9" fill="currentColor" stroke="none"></circle>
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="h-5 w-5"
+                        aria-hidden="true"
+                      >
+                        <path d="M13.5 21v-7h2.35l.35-2.75H13.5V9.5c0-.8.22-1.35 1.37-1.35H16.3V5.7c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.47 1.26-3.47 3.57v2.08H8.4V14h2.35v7h2.75Z"></path>
+                      </svg>
+                    )
+                  }
+                  <span class="sr-only">{link.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
     <div>

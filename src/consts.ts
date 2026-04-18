@@ -45,6 +45,19 @@ export const formattedAddress = `${SITE.address.streetAddress}, ${SITE.address.p
 export const phoneUrl = SITE.phone.replace(/\D+/g, '');
 export const whatsappUrl = `https://wa.me/${phoneUrl}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
 
+export const socialLinks = [
+  {
+    href: 'https://www.instagram.com/restaurante_mirabueno/',
+    label: 'Instagram',
+    ariaLabel: 'Visitar el perfil de Instagram de Mirabueno Casa de Comidas'
+  },
+  {
+    href: 'https://www.facebook.com/p/Restaurante-Venta-Mirabueno-100063625866546/',
+    label: 'Facebook',
+    ariaLabel: 'Visitar la pagina de Facebook de Mirabueno Casa de Comidas'
+  }
+];
+
 export const navLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/carta', label: 'Carta' },
