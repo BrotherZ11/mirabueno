@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../consts";
+---
+
+<BaseLayout
+  title="Página no encontrada | Mirabueno Casa de Comidas"
+  description="La página que buscas no existe o ya no está disponible. Vuelve al inicio o continúa hacia carta y reservas."
+  pathname="/404"
+  robots="noindex,nofollow"
+>
+  <section class="section-shell py-16 sm:py-24">
+    <div class="mx-auto max-w-4xl panel text-center">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="mt-4 font-display text-4xl text-text sm:text-6xl">
+        Esta página ya no está en la mesa.
+      </h1>
+      <p
+        class="mx-auto mt-6 max-w-2xl text-base leading-7 text-text/72 sm:text-lg"
+      >
+        Puede que la dirección no exista, haya cambiado o que el enlace esté
+        roto. Desde aquí puedes volver al inicio, consultar la carta o reservar
+        tu mesa.
+      </p>
+
+      <div
+        class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
+      >
+        <a href="/" class="btn-primary w-full justify-center sm:w-auto">
+          Volver al inicio
+        </a>
+        <a href="/carta" class="btn-secondary w-full justify-center sm:w-auto">
+          Ver carta
+        </a>
+        <a
+          href={whatsappUrl}
+          class="btn-secondary w-full justify-center sm:w-auto"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Reservar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

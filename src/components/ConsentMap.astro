@@ -142,7 +142,9 @@ const { src, title } = Astro.props;
     }
 
     syncConsentMaps(
-      isPreferences(event.detail?.preferences) ? event.detail.preferences : null,
+      isPreferences(event.detail?.preferences)
+        ? event.detail.preferences
+        : null,
     );
   });
 </script>

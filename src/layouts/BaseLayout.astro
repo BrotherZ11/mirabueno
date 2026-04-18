@@ -12,6 +12,7 @@ interface Props {
   description?: string;
   pathname?: string;
   image?: string;
+  robots?: string;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   description = SITE.defaultDescription,
   pathname = Astro.url.pathname,
   image = SITE.ogImage,
+  robots = "index,follow",
 } = Astro.props;
 
 const canonical = new URL(pathname, SITE.siteUrl).toString();
@@ -56,7 +58,7 @@ const schema = {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
@@ -145,9 +147,13 @@ const schema = {
       };
 
       const applyConsent = (preferences: ConsentPreferences | null) => {
-        document.documentElement.dataset.cookieConsent = preferences ? "configured" : "pending";
-        document.documentElement.dataset.cookieAnalytics = preferences?.analytics ? "accepted" : "rejected";
-        document.documentElement.dataset.cookieThirdParty = preferences?.thirdParty ? "accepted" : "rejected";
+        document.documentElement.dataset.cookieConsent = preferences
+          ? "configured"
+          : "pending";
+        document.documentElement.dataset.cookieAnalytics =
+          preferences?.analytics ? "accepted" : "rejected";
+        document.documentElement.dataset.cookieThirdParty =
+          preferences?.thirdParty ? "accepted" : "rejected";
 
         if (preferences?.analytics && !window.__mirabuenoAnalyticsLoaded) {
           inject();
@@ -184,7 +190,10 @@ const schema = {
             return;
           }
 
-          window.localStorage.setItem(cookieConsentKey, JSON.stringify(preferences));
+          window.localStorage.setItem(
+            cookieConsentKey,
+            JSON.stringify(preferences),
+          );
           applyConsent(preferences);
         },
       );
