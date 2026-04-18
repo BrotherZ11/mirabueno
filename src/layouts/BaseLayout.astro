@@ -1,6 +1,7 @@
 ---
 import "aos/dist/aos.css";
 import CookieConsent from "../components/CookieConsent.astro";
+import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 import Footer from "../components/Footer.astro";
@@ -84,6 +85,7 @@ const schema = {
     </main>
     <Footer />
     <CookieConsent />
+    <Analytics />
 
     <script>
       import AOS from "aos";
