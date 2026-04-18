@@ -2,15 +2,15 @@
 import {
   SITE,
   formattedAddress,
+  legalLinks,
   navLinks,
   phoneUrl,
-  whatsappUrl,
 } from "../consts";
 ---
 
 <footer class="border-t border-black/8 bg-white/70 backdrop-blur-sm">
   <div
-    class="section-shell grid gap-8 py-10 sm:py-14 lg:grid-cols-[1.2fr_0.8fr_0.8fr]"
+    class="section-shell grid gap-8 py-10 sm:py-14 lg:grid-cols-[1.1fr_0.8fr_0.8fr_0.8fr]"
   >
     <div class="space-y-5">
       <p class="eyebrow">Restaurante en Setenil de las Bodegas</p>
@@ -59,6 +59,30 @@ import {
         </li>
       </ul>
     </div>
+
+    <div>
+      <h3 class="font-display text-xl text-text">Legal</h3>
+      <ul class="mt-5 space-y-3 text-text/70">
+        {
+          legalLinks.map((link) => (
+            <li>
+              <a href={link.href} class="transition hover:text-primary-light">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <button
+            type="button"
+            class="text-left transition hover:text-primary-light"
+            id="open-cookie-settings"
+          >
+            Configurar cookies
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="border-t border-black/8">
@@ -68,3 +92,11 @@ import {
     </p>
   </div>
 </footer>
+
+<script>
+  const openCookieSettings = document.querySelector("#open-cookie-settings");
+
+  openCookieSettings?.addEventListener("click", () => {
+    window.dispatchEvent(new CustomEvent("mirabueno:open-cookie-settings"));
+  });
+</script>

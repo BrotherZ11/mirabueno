@@ -1,0 +1,27 @@
+{
+  "placeName": "Restaurante Venta Mirabueno",
+  "rating": 4.5,
+  "userRatingsTotal": 1524,
+  "sourceUrl": "https://maps.google.com/?cid=11103344556967615065&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "fetchedAt": "2026-04-17T15:37:10.069Z",
+  "reviews": [
+    {
+      "authorName": "Alfonso Lopez",
+      "rating": 4,
+      "relativeTimeDescription": "Hace 3 meses",
+      "text": "Buen lugar para comer. Comida casera y bien hecha. Pedimos para compartir unas croquetas y unas migas. Las migas de 10!! Y un plato para cada uno quenfueron un risoto de ibérico y espinacas y un rato de toro. Muy..."
+    },
+    {
+      "authorName": "Cristian Vidal",
+      "rating": 5,
+      "relativeTimeDescription": "Hace 6 meses",
+      "text": "Lugar para repetir, que fue nuestro caso, tanto para almorzar como cenar. La comida espectacular y de calidad, todo casero y por mi parte, destacar el buen sabor del rabo de toro y el bacalao con alioli. El trato de..."
+    },
+    {
+      "authorName": "Beatriz Amaya Dolores",
+      "rating": 5,
+      "relativeTimeDescription": "Hace 6 meses",
+      "text": "Comida exquisita y lugar espectacular. Recomiendo comer en la terracita. Añado un par de fotitos de dos platos que son, el timbal de pato con queso de cabra, manzana caramelizada y mermelada de frambuesa y rabo de..."
+    }
+  ]
+}

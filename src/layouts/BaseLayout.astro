@@ -1,6 +1,6 @@
 ---
 import "aos/dist/aos.css";
-import Analytics from "@vercel/analytics/astro";
+import CookieConsent from "../components/CookieConsent.astro";
 import "../styles/global.css";
 
 import Footer from "../components/Footer.astro";
@@ -36,6 +36,7 @@ const schema = {
     streetAddress: SITE.address.streetAddress,
     addressLocality: SITE.address.locality,
     postalCode: SITE.address.postalCode,
+    addressRegion: SITE.address.region,
     addressCountry: SITE.address.countryCode,
   },
   openingHoursSpecification: SITE.hours.map((slot) => ({
@@ -57,13 +58,6 @@ const schema = {
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content={SITE.legalName} />
@@ -77,7 +71,11 @@ const schema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
   </head>
   <body>
     <Navbar />
@@ -85,10 +83,40 @@ const schema = {
       <slot />
     </main>
     <Footer />
-    <Analytics />
+    <CookieConsent />
 
     <script>
       import AOS from "aos";
+      import { inject } from "@vercel/analytics";
+
+      type ConsentValue = "accepted" | "rejected" | null;
+
+      declare global {
+        interface Window {
+          __mirabuenoAnalyticsLoaded?: boolean;
+        }
+      }
+
+      const cookieConsentKey = "mirabueno-cookie-consent";
+
+      const dispatchConsent = (value: ConsentValue) => {
+        window.dispatchEvent(
+          new CustomEvent("mirabueno:cookie-consent", {
+            detail: { value },
+          }),
+        );
+      };
+
+      const applyConsent = (value: ConsentValue) => {
+        document.documentElement.dataset.cookieConsent = value || "pending";
+
+        if (value === "accepted" && !window.__mirabuenoAnalyticsLoaded) {
+          inject();
+          window.__mirabuenoAnalyticsLoaded = true;
+        }
+
+        dispatchConsent(value);
+      };
 
       const initAos = () => {
         AOS.init({
@@ -99,7 +127,33 @@ const schema = {
         });
       };
 
+      const storedConsent = window.localStorage.getItem(cookieConsentKey);
+
+      applyConsent((storedConsent as ConsentValue) ?? null);
       initAos();
+
+      window.addEventListener(
+        "mirabueno:set-cookie-consent",
+        (event: Event) => {
+          if (!(event instanceof CustomEvent)) {
+            return;
+          }
+
+          const value =
+            (event.detail?.value as ConsentValue | undefined) ?? null;
+
+          if (value !== "accepted" && value !== "rejected") {
+            return;
+          }
+
+          window.localStorage.setItem(cookieConsentKey, value);
+          applyConsent(value);
+        },
+      );
+
+      window.addEventListener("mirabueno:open-cookie-settings", () => {
+        document.documentElement.dataset.cookieConsent = "pending";
+      });
     </script>
   </body>
 </html>

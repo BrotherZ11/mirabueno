@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../consts";
+---
+
+<BaseLayout
+  title={`Política de cookies | ${SITE.legalName}`}
+  description={`Política de cookies y tecnologías similares de ${SITE.legalName} conforme a la LSSI.`}
+  pathname="/politica-de-cookies"
+>
+  <section class="section-shell py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <header class="panel">
+        <p class="eyebrow">Cookies y tecnologías similares</p>
+        <h1 class="mt-3 font-display text-3xl text-text sm:text-5xl">
+          Política de cookies
+        </h1>
+        <p class="mt-5 text-base leading-7 text-text/72 sm:text-lg">
+          Esta política explica el uso de cookies y tecnologías similares en
+          este sitio web, de acuerdo con la Ley 34/2002 y la normativa aplicable
+          en materia de privacidad electrónica.
+        </p>
+        <p class="mt-4 text-sm text-text/55">
+          Última actualización: {SITE.legal.lastUpdated}
+        </p>
+      </header>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Qué son las cookies</h2>
+        <p class="text-text/72">
+          Las cookies son pequeños archivos o tecnologías similares que pueden
+          almacenarse en el dispositivo del usuario para recordar información
+          sobre la navegación o permitir ciertas funcionalidades del sitio.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Cookies y servicios utilizados
+        </h2>
+        <ul class="space-y-3 text-text/72">
+          <li>
+            <strong>Técnicas o necesarias:</strong> el sitio puede utilizar almacenamiento
+            local del navegador para recordar la preferencia de consentimiento y asegurar
+            el funcionamiento básico de ciertos elementos de la interfaz.
+          </li>
+          <li>
+            <strong>Google Maps:</strong> el mapa embebido puede instalar cookies
+            o tratar datos técnicos del usuario cuando se visita la página de contacto,
+            pero solo se carga tras aceptación.
+          </li>
+          <li>
+            <strong>Vercel Analytics:</strong> se utiliza para medir rendimiento y
+            uso del sitio y solo se activa si el usuario acepta cookies.
+          </li>
+          <li>
+            <strong>No se usan cookies publicitarias propias:</strong> esta web no
+            instala, por sí misma, cookies de perfilado o publicidad comportamental.
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Base de legitimación</h2>
+        <p class="text-text/72">
+          Las tecnologías no necesarias solo se activan sobre la base del
+          consentimiento del usuario. Las funcionalidades estrictamente
+          necesarias para recordar su elección o mantener el funcionamiento
+          básico del sitio podrán utilizarse sin consentimiento adicional cuando
+          así lo permita la normativa aplicable.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Gestión por parte del usuario
+        </h2>
+        <p class="text-text/72">
+          El usuario puede permitir, bloquear o eliminar cookies desde la
+          configuración de su navegador. La desactivación de determinadas
+          tecnologías puede afectar al funcionamiento correcto de algunas partes
+          del sitio o de servicios de terceros integrados.
+        </p>
+        <p class="text-text/72">
+          Además, esta web ofrece un mecanismo para aceptar, rechazar o revisar
+          el consentimiento desde el banner inicial y desde el enlace Configurar
+          cookies del pie de página.
+        </p>
+        <p class="text-text/72">
+          El usuario puede modificar su elección en cualquier momento y eliminar
+          los datos almacenados desde la configuración del navegador.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Terceros y transferencias
+        </h2>
+        <p class="text-text/72">
+          Los servicios de Google, WhatsApp o Vercel pueden implicar accesos o
+          tratamientos de datos por parte de terceros, incluso fuera del Espacio
+          Económico Europeo, conforme a sus propias políticas y garantías. Si en
+          el futuro se añaden nuevas herramientas de terceros, esta política
+          deberá actualizarse para reflejar su uso.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import Icon from "../assets/icon.png";
+import Lettermark from "../assets/letra.png";
 import { navLinks, whatsappUrl } from "../consts";
 
 const currentPath = Astro.url.pathname;
@@ -9,27 +10,30 @@ const currentPath = Astro.url.pathname;
   class="sticky top-0 z-50 border-b border-black/8 bg-background/90 backdrop-blur-xl"
 >
   <div
-    class="section-shell flex items-center justify-between gap-3 py-3 sm:gap-6 sm:py-4"
+    class="section-shell flex items-center justify-between gap-2 py-3 sm:gap-6 sm:py-4"
   >
     <a
       href="/"
-      class="min-w-0 flex items-center gap-2 text-sm tracking-[0.22em] text-text sm:gap-3 sm:tracking-[0.3em]"
+      class="min-w-0 flex flex-1 items-center gap-1.5 text-sm tracking-[0.22em] text-text sm:gap-3 sm:tracking-[0.3em]"
       aria-label="Ir a la página principal de Mirabueno"
     >
       <img
         src={Icon.src}
         alt="Logo de Mirabueno"
-        class="h-20 w-20 shrink-0 object-cover sm:h-24 sm:w-24"
+        class="h-14 w-14 shrink-0 object-cover sm:h-24 sm:w-24"
         width="96"
         height="96"
       />
-      <span class="min-w-0">
+      <span class="min-w-0 flex flex-col justify-center gap-1 items-start">
+        <img
+          src={Lettermark.src}
+          alt="Mirabueno"
+          class="-ml-1 block h-auto w-30 max-w-full object-contain sm:-ml-3 sm:w-50"
+          width="840"
+          height="234"
+        />
         <span
-          class="block truncate font-display text-base font-semibold tracking-[0.04em] sm:text-xl sm:tracking-[0.08em]"
-          >Mirabueno</span
-        >
-        <span
-          class="block truncate text-[0.62rem] uppercase tracking-[0.16em] text-text/60 sm:text-xs sm:tracking-[0.28em]"
+          class="block max-w-full truncate pl-1 text-[0.58rem] uppercase tracking-[0.12em] text-text/60 sm:text-xs sm:tracking-[0.28em]"
           >Casa de Comidas</span
         >
       </span>

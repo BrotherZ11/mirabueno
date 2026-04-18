@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, formattedAddress } from "../consts";
+---
+
+<BaseLayout
+  title={`Accesibilidad | ${SITE.legalName}`}
+  description={`Declaración de accesibilidad de ${SITE.legalName} conforme a la normativa europea y española vigente.`}
+  pathname="/accesibilidad"
+>
+  <section class="section-shell py-14 sm:py-20">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <header class="panel">
+        <p class="eyebrow">Accesibilidad web</p>
+        <h1 class="mt-3 font-display text-3xl text-text sm:text-5xl">
+          Declaración de accesibilidad
+        </h1>
+        <p class="mt-5 text-base leading-7 text-text/72 sm:text-lg">
+          {SITE.legalName} trabaja para que este sitio web sea utilizable por el mayor
+          número posible de personas, aplicando buenas prácticas de accesibilidad
+          web con carácter voluntario y revisando de forma progresiva sus contenidos
+          y componentes.
+        </p>
+        <p class="mt-4 text-sm text-text/55">
+          Última actualización: {SITE.legal.lastUpdated}
+        </p>
+      </header>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Situación de cumplimiento
+        </h2>
+        <p class="text-text/72">
+          Este sitio web se ha desarrollado procurando alinearse, en la medida
+          de lo razonable para un sitio informativo de estas características,
+          con las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 en su
+          nivel AA. No obstante, es posible que algunas secciones o contenidos
+          de terceros embebidos no cumplan plenamente con todos los requisitos
+          de accesibilidad.
+        </p>
+        <p class="text-text/72">
+          Esta declaración tiene carácter informativo y refleja el estado del
+          sitio en la fecha de su última revisión.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Medidas adoptadas</h2>
+        <ul class="list-disc space-y-2 pl-5 text-text/72">
+          <li>Uso del atributo <code>lang="es"</code> en el documento HTML.</li>
+          <li>
+            Estructura semántica con encabezados jerárquicos, landmarks y
+            etiquetas ARIA donde corresponde.
+          </li>
+          <li>
+            Textos alternativos en las imágenes y títulos descriptivos en los
+            iframes embebidos.
+          </li>
+          <li>
+            Contraste de color revisado para facilitar la lectura del contenido
+            principal.
+          </li>
+          <li>
+            Navegación accesible por teclado y menú responsive con controles
+            etiquetados.
+          </li>
+          <li>
+            Consentimiento de cookies gestionado antes de cargar contenidos de
+            terceros.
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">Contenido no accesible</h2>
+        <p class="text-text/72">
+          El contenido que se recoge a continuación no es accesible o puede
+          presentar limitaciones por los motivos indicados:
+        </p>
+        <ul class="list-disc space-y-2 pl-5 text-text/72">
+          <li>
+            Contenidos embebidos de terceros (Google Maps, carta online en
+            MyBakarta) cuya accesibilidad depende de dichos proveedores
+            externos.
+          </li>
+          <li>
+            Algunas imágenes procedentes de fuentes externas pueden carecer de
+            texto alternativo suficientemente descriptivo.
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Comunicación de incidencias
+        </h2>
+        <p class="text-text/72">
+          Si detectas algún problema de accesibilidad en este sitio web o deseas
+          realizar alguna consulta o sugerencia al respecto, puedes ponerte en
+          contacto con nosotros a través de:
+        </p>
+        <ul class="space-y-3 text-text/72">
+          <li><strong>Teléfono:</strong> {SITE.phone}</li>
+          <li>
+            <strong>Correo electrónico:</strong>{" "}
+            {
+              SITE.legal.contactEmail ||
+                "Pendiente de facilitar por el titular."
+            }
+          </li>
+          <li><strong>Dirección:</strong> {formattedAddress}</li>
+        </ul>
+        <p class="text-text/72">
+          Intentaremos atender y resolver cualquier queja o sugerencia en un
+          plazo razonable.
+        </p>
+      </article>
+
+      <article class="panel space-y-4">
+        <h2 class="font-display text-2xl text-text">
+          Procedimiento de reclamación
+        </h2>
+        <p class="text-text/72">
+          Si, tras comunicar una incidencia de accesibilidad, la respuesta no
+          resulta satisfactoria, puedes volver a contactar con el titular a
+          través de los medios indicados para una nueva revisión. Si la
+          incidencia afecta a un servicio de terceros embebido, también podrá
+          ser necesario acudir al proveedor correspondiente.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

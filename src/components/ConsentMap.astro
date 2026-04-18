@@ -1,0 +1,104 @@
+---
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div
+  class="overflow-hidden rounded-4xl border border-black/8 bg-surface shadow-wine"
+  data-consent-map
+  data-map-src={src}
+  data-map-title={title}
+>
+  <div
+    class="flex h-88 w-full flex-col items-center justify-center gap-4 p-6 text-center text-text/72 sm:min-h-145"
+  >
+    <p class="eyebrow">Mapa bloqueado hasta consentimiento</p>
+    <h2 class="font-display text-2xl text-text">
+      Activa cookies para ver Google Maps
+    </h2>
+    <p class="max-w-lg text-sm leading-7 sm:text-base">
+      El mapa embebido utiliza servicios de Google y solo se cargará si aceptas
+      cookies de terceros.
+    </p>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <button
+        type="button"
+        class="btn-primary w-full justify-center sm:w-auto"
+        data-consent-map-accept
+      >
+        Aceptar y cargar mapa
+      </button>
+      <a
+        href="/politica-de-cookies"
+        class="btn-secondary w-full justify-center sm:w-auto"
+      >
+        Más información
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const mapConsentKey = "mirabueno-cookie-consent";
+  type ConsentValue = "accepted" | "rejected";
+
+  const mountMap = (container: Element) => {
+    if (
+      !(container instanceof HTMLElement) ||
+      container.dataset.loaded === "true"
+    ) {
+      return;
+    }
+
+    const iframe = document.createElement("iframe");
+    iframe.src = container.dataset.mapSrc ?? "";
+    iframe.title = container.dataset.mapTitle ?? "Mapa";
+    iframe.className = "h-88 w-full sm:h-full sm:min-h-145";
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "no-referrer-when-downgrade";
+    iframe.allowFullscreen = true;
+
+    container.innerHTML = "";
+    container.appendChild(iframe);
+    container.dataset.loaded = "true";
+  };
+
+  const syncConsentMaps = (consentValue: ConsentValue | null) => {
+    const maps = document.querySelectorAll("[data-consent-map]");
+    maps.forEach((map) => {
+      if (consentValue === "accepted") {
+        mountMap(map);
+      }
+    });
+  };
+
+  document.querySelectorAll("[data-consent-map-accept]").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.dispatchEvent(
+        new CustomEvent("mirabueno:set-cookie-consent", {
+          detail: { value: "accepted" },
+        }),
+      );
+    });
+  });
+
+  const storedConsent = window.localStorage.getItem(mapConsentKey);
+  const initialConsent: ConsentValue | null =
+    storedConsent === "accepted" || storedConsent === "rejected"
+      ? storedConsent
+      : null;
+
+  syncConsentMaps(initialConsent);
+
+  window.addEventListener("mirabueno:cookie-consent", (event: Event) => {
+    if (!(event instanceof CustomEvent)) {
+      return;
+    }
+
+    syncConsentMaps((event.detail?.value as ConsentValue | null) ?? null);
+  });
+</script>

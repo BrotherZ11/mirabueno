@@ -1,7 +1,8 @@
 ---
+import ConsentMap from "../components/ConsentMap.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { SITE, formattedAddress, phoneUrl, whatsappUrl } from "../consts";
+import { SITE, formattedAddress, phoneUrl } from "../consts";
 ---
 
 <BaseLayout
@@ -49,26 +50,13 @@ import { SITE, formattedAddress, phoneUrl, whatsappUrl } from "../consts";
             }
           </ul>
         </article>
-
-        <a
-          href={whatsappUrl}
-          class="btn-primary justify-center"
-          target="_blank"
-          rel="noreferrer">Reservar por WhatsApp</a
-        >
       </div>
 
-      <div
-        class="overflow-hidden rounded-4xl border border-black/8 bg-white shadow-wine"
-        data-aos="fade-left"
-      >
-        <iframe
+      <div data-aos="fade-left">
+        <ConsentMap
           src={SITE.mapEmbedUrl}
           title="Mapa de Mirabueno Casa de Comidas en Setenil de las Bodegas"
-          class="h-88 w-full sm:h-full sm:min-h-145"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen></iframe>
+        />
       </div>
     </div>
   </section>
