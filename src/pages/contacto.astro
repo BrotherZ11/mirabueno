@@ -2,7 +2,7 @@
 import ConsentMap from "../components/ConsentMap.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { SITE, formattedAddress, phoneUrl, whatsappUrl } from "../consts";
+import { SITE, formattedAddress, phoneUrl } from "../consts";
 ---
 
 <BaseLayout
@@ -50,13 +50,6 @@ import { SITE, formattedAddress, phoneUrl, whatsappUrl } from "../consts";
             }
           </ul>
         </article>
-
-        <a
-          href={whatsappUrl}
-          class="btn-primary justify-center"
-          target="_blank"
-          rel="noreferrer">Reservar por WhatsApp</a
-        >
       </div>
 
       <div data-aos="fade-left">

@@ -15,10 +15,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-background font-sans text-text antialiased;
+    overflow-x: clip;
     background-image:
       radial-gradient(circle at top, rgba(97, 38, 40, 0.1), transparent 34%),
       linear-gradient(180deg, #f3f0e9 0%, #f9f9f9 100%);
