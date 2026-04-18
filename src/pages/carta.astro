@@ -95,6 +95,45 @@ import { SITE, whatsappUrl } from "../consts";
 
   <script>
     const consentKey = "mirabueno-cookie-consent";
+    type ConsentPreferences = {
+      analytics: boolean;
+      thirdParty: boolean;
+    };
+
+    const isPreferences = (value: unknown): value is ConsentPreferences => {
+      if (!value || typeof value !== "object") {
+        return false;
+      }
+
+      const candidate = value as Record<string, unknown>;
+      return (
+        typeof candidate.analytics === "boolean" &&
+        typeof candidate.thirdParty === "boolean"
+      );
+    };
+
+    const parseStoredConsent = (): ConsentPreferences | null => {
+      const storedConsent = window.localStorage.getItem(consentKey);
+
+      if (!storedConsent) {
+        return null;
+      }
+
+      if (storedConsent === "accepted") {
+        return { analytics: true, thirdParty: true };
+      }
+
+      if (storedConsent === "rejected") {
+        return { analytics: false, thirdParty: false };
+      }
+
+      try {
+        const parsed = JSON.parse(storedConsent) as unknown;
+        return isPreferences(parsed) ? parsed : null;
+      } catch {
+        return null;
+      }
+    };
 
     const mountIframe = (container: Element) => {
       if (
@@ -116,9 +155,9 @@ import { SITE, whatsappUrl } from "../consts";
       container.dataset.loaded = "true";
     };
 
-    const syncConsentIframes = (value: string | null) => {
+    const syncConsentIframes = (preferences: ConsentPreferences | null) => {
       document.querySelectorAll("[data-consent-iframe]").forEach((el) => {
-        if (value === "accepted") {
+        if (preferences?.thirdParty) {
           mountIframe(el);
         }
       });
@@ -128,19 +167,33 @@ import { SITE, whatsappUrl } from "../consts";
       .querySelectorAll("[data-consent-iframe-accept]")
       .forEach((button) => {
         button.addEventListener("click", () => {
+          const currentPreferences = parseStoredConsent() ?? {
+            analytics: false,
+            thirdParty: false,
+          };
+
           window.dispatchEvent(
             new CustomEvent("mirabueno:set-cookie-consent", {
-              detail: { value: "accepted" },
+              detail: {
+                preferences: {
+                  ...currentPreferences,
+                  thirdParty: true,
+                },
+              },
             }),
           );
         });
       });
 
-    syncConsentIframes(window.localStorage.getItem(consentKey));
+    syncConsentIframes(parseStoredConsent());
 
     window.addEventListener("mirabueno:cookie-consent", ((event: Event) => {
       if (event instanceof CustomEvent) {
-        syncConsentIframes(event.detail?.value);
+        syncConsentIframes(
+          isPreferences(event.detail?.preferences)
+            ? event.detail.preferences
+            : null,
+        );
       }
     }) as EventListener);
   </script>
